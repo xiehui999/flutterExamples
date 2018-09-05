@@ -6,3 +6,8 @@ A new Flutter application.
 
 For help getting started with Flutter, view our online
 [documentation](https://flutter.io/).
+
+# 常用命令
+
+- flutter packages get  安装依赖
+- flutter run lib/tabbed_app_bar.dart  直接运行指定文件
