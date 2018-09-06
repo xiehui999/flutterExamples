@@ -37,13 +37,20 @@ class ChoiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextStyle textStyle = Theme.of(context).textTheme.display1;
-
-    return new Card(color: Colors.white,
-    child: new Center(child: new Column(mainAxisSize:MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        new Icon(choice.icon,size: 128.0),
-        new Text(choice.title,style: textStyle)],),),);
+//crossAxisAlignment交叉轴的对齐方式，交叉轴是主轴的垂直方向
+    return new Card(
+      color: Colors.white,
+      child: new Center(
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Icon(choice.icon, size: 128.0),
+            new Text(choice.title, style: textStyle)
+          ],
+        ),
+      ),
+    );
   }
 }
 
