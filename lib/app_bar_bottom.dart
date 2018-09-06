@@ -47,8 +47,7 @@ class _AppBarBottomSampleState extends State<AppBarBottomSample>
 
   void _nextPage(int delta) {
     final int newIndex = _tabController.index + delta;
-    if (newIndex < 0 || newIndex >= _tabController.length)
-      return;
+    if (newIndex < 0 || newIndex >= _tabController.length) return;
     _tabController.animateTo(newIndex);
   }
 
@@ -105,20 +104,24 @@ class _AppBarBottomSampleState extends State<AppBarBottomSample>
                 onPressed: () {
                   _nextPage(1);
                 }),
-            new PopupMenuButton(itemBuilder: (BuildContext context) =>
-            <PopupMenuItem<String>>[
-              new PopupMenuItem<String>(
-                  child: new Text("MENU1"), value: "menu1"),
-              new PopupMenuItem<String>(
-                child: new Text("MENU2"), value: "mebu2",)
-            ], onSelected: (String action) {
-              switch (action) {
-                case "menu1":
-                  break;
-                case "menu2" :
-                  break;
-              }
-            },)
+            new PopupMenuButton(
+              itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
+                    new PopupMenuItem<String>(
+                        child: new Text("MENU1"), value: "menu1"),
+                    new PopupMenuItem<String>(
+                      child: new Text("MENU2"),
+                      value: "mebu2",
+                    )
+                  ],
+              onSelected: (String action) {
+                switch (action) {
+                  case "menu1":
+                    break;
+                  case "menu2":
+                    break;
+                }
+              },
+            )
           ],
           bottom: new PreferredSize(
               child: new Theme(
@@ -173,10 +176,7 @@ class ChoiceCard extends StatelessWidget {
 //  Table  多行多列布局（Row,Column只能实现单列）
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme
-        .of(context)
-        .textTheme
-        .display1;
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
     return new Card(
       color: Colors.white,
       child: new Center(
