@@ -127,9 +127,110 @@ class CustomTraversalExampleState extends State<CustomTraversalExample> {
     });
   }
 
+  Widget _makeFieldHeader(int rowOrder, int columnOrder, Field field) {
+    return new RowColumnTraversal(
+        rowOrder: rowOrder,
+        columnOrder: columnOrder,
+        child: new Text(_fileToName(field)));
+  }
+
+  Widget _makeSpinnerButton(int rowOrder, int columnOrder, Field field,
+      {bool increment = true}) {
+    return new SpinnerButton(
+      rawOrder: rowOrder,
+      columnOrder: columnOrder,
+      icon: increment ? Icons.arrow_upward : Icons.arrow_downward,
+      onPressed: () => _addToField(field, increment ? 1 : -1),
+      field: field,
+      increment: increment,
+    );
+  }
+
+  Widget _makeEntryField(int rowOrder, int columnPrder, Field field) {
+    return new FieldWidget(
+      rowOrder: rowOrder,
+      columnOrder: columnPrder,
+      onIncrease: () => _addToField(field, 1),
+      onDecrease: () => _addToField(field, -1),
+      value: fields[field.index],
+      field: field,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    return new MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: Text('Pet Inventory'),
+        ),
+        body: new Builder(builder: (BuildContext context) {
+          return new DefaultTextStyle(
+            style: DefaultTextStyle.of(context).style.copyWith(fontSize: 21.0),
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                new Semantics(
+                  sortKey: const OrdinalSortKey(0.0),
+                  child: const Text('How many pets do you own?'),
+                ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 40.0)),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    _makeFieldHeader(1, 0, Field.DOGS),
+                    _makeFieldHeader(1, 1, Field.CATS),
+                    _makeFieldHeader(1, 2, Field.FISH),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    _makeSpinnerButton(3, 0, Field.DOGS, increment: true),
+                    _makeSpinnerButton(3, 1, Field.CATS, increment: true),
+                    _makeSpinnerButton(3, 2, Field.FISH, increment: true),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _makeEntryField(2, 0, Field.DOGS),
+                    _makeEntryField(2, 1, Field.CATS),
+                    _makeEntryField(2, 2, Field.FISH),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    _makeSpinnerButton(4, 0, Field.DOGS, increment: true),
+                    _makeSpinnerButton(4, 1, Field.CATS, increment: true),
+                    _makeSpinnerButton(4, 2, Field.FISH, increment: true),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+                new Semantics(
+                  sortKey: const OrdinalSortKey(5.0),
+                  child: new MaterialButton(
+                    child: const Text('RESET'),
+                    onPressed: () {
+                      setState(() {
+                        fields = <int>[0, 0, 0];
+                      });
+                    },
+                    textColor: Colors.blue,
+                    textTheme: ButtonTextTheme.normal,
+                  ),
+                )
+              ],
+            ),
+          );
+        }),
+      ),
+    );
   }
+}
+
+void main(){
+  runApp(new CustomTraversalExample());
 }
