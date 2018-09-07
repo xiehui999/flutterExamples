@@ -95,10 +95,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
 }
 
 class ListModel<E> {
-  ListModel({@required this.listKey, @required this.removedItemBuilder, Iterable<E> initialItems})
+  ListModel(
+      {@required this.listKey,
+      @required this.removedItemBuilder,
+      Iterable<E> initialItems})
       : assert(listKey != null),
         assert(removedItemBuilder != null),
-        _items = new List<E>.from(initialItems??<E>[]);
+        _items = new List<E>.from(initialItems ?? <E>[]);
 
   final GlobalKey<AnimatedListState> listKey;
   final dynamic removedItemBuilder;
