@@ -13,7 +13,10 @@ class _PlatformChannelState extends State<PlatformChannel> {
   static const MethodChannel methodChannel =
       MethodChannel('samples.flutter.io/battery');
 
+  static const EventChannel eventChannel =
+      EventChannel('samples.flutter.io/charging');
   String _batteryLevel = 'Battery level: unknown.';
+  String _chargingStatus = 'Battery status: unknown.';
 
   Future<Null> _getBatterLevel() async {
     String batteryLevel;
@@ -26,6 +29,13 @@ class _PlatformChannelState extends State<PlatformChannel> {
     setState(() {
       _batteryLevel = batteryLevel;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
 
   @override
@@ -46,10 +56,23 @@ class _PlatformChannelState extends State<PlatformChannel> {
                   ))
             ],
           ),
-          new Text(_batteryLevel)
+          new Text(_chargingStatus)
         ],
       ),
     );
+  }
+
+  void _onEvent(event) {
+    setState(() {
+      _chargingStatus =
+          "Battery status :${event == 'Charging' ? "Charging" : 'discharging'} ";
+    });
+  }
+
+  void _onError(event) {
+    setState(() {
+      _chargingStatus = 'Battery status: unknown.';
+    });
   }
 }
 
