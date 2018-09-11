@@ -89,7 +89,8 @@ class HomeTab extends StatefulWidget {
   }
 }
 
-class HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
+class HomeTabState extends State<HomeTab>
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   int _currentIndex = 0;
   BottomNavigationBarType _type = BottomNavigationBarType.shifting;
   List<NavigationIconView> _navigationViews;
@@ -125,6 +126,15 @@ class HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
       view.controller.addListener(_rebuild);
       _navigationViews[_currentIndex].controller.value = 1.0;
     }
+  }
+
+//前后台状态监听
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    ///通过state判断App前后台切换
+    if (state == AppLifecycleState.resumed) {}
   }
 
   @override
