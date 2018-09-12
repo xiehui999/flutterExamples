@@ -185,7 +185,7 @@ class Tab1RowItem extends StatelessWidget {
           top: false,
           bottom: false,
           child: new Padding(
-            padding: const EdgeInsets.only(left: 16.0, top: 8.0, right: 8.0),
+            padding: const EdgeInsets.only(left: 16.0, top: 8.0, right: 8.0,bottom: 8.0),
             child: new Row(
               children: <Widget>[
                 new Container(
@@ -428,7 +428,7 @@ class ExitButton extends StatelessWidget {
           excludeFromSemantics: true,
         ),
         onPressed: () {
-          Navigator.of(context, rootNavigator: true).pop();
+//          Navigator.of(context, rootNavigator: true).pop();
         });
   }
 }
@@ -784,5 +784,5 @@ class Tab3Dialog extends StatelessWidget {
 }
 
 void main() {
-  runApp(new CupertinoNavigation());
+  runApp(new MaterialApp(home: new CupertinoNavigation(),));
 }
