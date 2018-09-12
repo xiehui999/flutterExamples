@@ -7,7 +7,8 @@ class NavigationIconView {
     String title,
     Color color,
     TickerProvider vsync,
-  })  : _icon = icon,
+  })
+      : _icon = icon,
         _color = color,
         _title = title,
         item = new BottomNavigationBarItem(
@@ -29,8 +30,8 @@ class NavigationIconView {
   final AnimationController controller;
   CurvedAnimation _animation;
 
-  FadeTransition treansition(
-      BottomNavigationBarType type, BuildContext context) {
+  FadeTransition treansition(BottomNavigationBarType type,
+      BuildContext context) {
     Color iconColor;
     if (type == BottomNavigationBarType.shifting) {
       iconColor = _color;
@@ -44,8 +45,8 @@ class NavigationIconView {
       opacity: _animation,
       child: new SlideTransition(
         position:
-            new Tween<Offset>(begin: const Offset(0.0, 0.02), end: Offset.zero)
-                .animate(_animation),
+        new Tween<Offset>(begin: const Offset(0.0, 0.02), end: Offset.zero)
+            .animate(_animation),
         child: new IconTheme(
             data: new IconThemeData(color: iconColor, size: 120.0),
             child: new Semantics(
@@ -64,6 +65,7 @@ class CustomIcon extends StatelessWidget {
       margin: const EdgeInsets.all(4.0),
       width: iconThemeData.size - 8.0,
       height: iconThemeData.size - 8.0,
+      color: iconThemeData.color,
     );
   }
 }
@@ -101,12 +103,12 @@ class HomeTabState extends State<HomeTab>
     _navigationViews = <NavigationIconView>[
       new NavigationIconView(
           icon: const Icon(Icons.access_alarm),
-          title: 'Alarm',
+          title: 'Style',
           color: Colors.deepPurple,
           vsync: this),
       new NavigationIconView(
-          icon: new CustomInactiveIcon(),
           activeIcon: new CustomIcon(),
+          icon: new CustomInactiveIcon(),
           title: 'Box',
           color: Colors.deepOrange,
           vsync: this),
@@ -152,6 +154,7 @@ class HomeTabState extends State<HomeTab>
   }
 
   Widget _buildTransitionsStack() {
+//    _currentIndex
     final List<FadeTransition> transitions = <FadeTransition>[];
     for (NavigationIconView view in _navigationViews) {
       transitions.add(view.treansition(_type, context));
@@ -188,10 +191,10 @@ class HomeTabState extends State<HomeTab>
         actions: <Widget>[
           new PopupMenuButton<BottomNavigationBarType>(
               onSelected: (BottomNavigationBarType value) {
-            setState(() {
-              _type = value;
-            });
-          }, itemBuilder: (BuildContext context) {
+                setState(() {
+                  _type = value;
+                });
+              }, itemBuilder: (BuildContext context) {
             return <PopupMenuItem<BottomNavigationBarType>>[
               PopupMenuItem<BottomNavigationBarType>(
                 value: BottomNavigationBarType.fixed,
@@ -205,16 +208,43 @@ class HomeTabState extends State<HomeTab>
           })
         ],
       ),
-      body: new Center(
-        child: _buildTransitionsStack(),
+      body: IndexedStack(
+        children: <Widget>[
+          new Center(
+            child: new Tab1View(),
+          ),
+          new Center(
+            child: new Text('2222222'),
+          ),
+          new Center(
+            child: new Text('33333333'),
+          ),
+          new Center(
+            child: new Text('444444'),
+          ),
+        ],
+        index: _currentIndex,
       ),
       bottomNavigationBar: bottomNavigationBar,
     );
   }
 }
 
+class Tab1View extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return new Material(
+      child: new Scaffold(
+      ),
+    );
+  }
+
+}
+
 void main() {
   runApp(new MaterialApp(
+    title: 'HomeTab',
     home: new HomeTab(),
   ));
 }
