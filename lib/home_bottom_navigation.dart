@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'typography_demo.dart';
+import 'listItem.dart';
 
 class NavigationIconView {
   NavigationIconView({
@@ -85,6 +87,8 @@ class CustomInactiveIcon extends StatelessWidget {
 }
 
 class HomeTab extends StatefulWidget {
+  static const String routeName = '/hometab'; // Used by the Gallery app.
+
   @override
   State<StatefulWidget> createState() {
     return new HomeTabState();
@@ -230,21 +234,62 @@ class HomeTabState extends State<HomeTab>
   }
 }
 
-class Tab1View extends StatelessWidget {
+class ItemListView extends StatelessWidget {
+  const ItemListView({Key key, this.item}) : super(key: key);
+  final ListItem item;
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final bool isDark = theme.brightness == Brightness.dark;
+    final double textScaleFactor = MediaQuery.textScaleFactorOf(context);
+    final List<Widget> titleChildren = <Widget>[
+      new Text(
+        item.title,
+        style: theme.textTheme.subhead
+            .copyWith(color: isDark ? Colors.white : Color(0xff202124)),
+      )
+    ];
+    if (item.subtitle != null) {
+      titleChildren.add(new Text(item.subtitle,
+        style: theme.textTheme.body1.copyWith(
+            color: isDark ? Colors.white : const Color(0xff60646b)),));
+    }
+    return new RawMaterialButton(onPressed: (){});
+  }
+}
+
+class Tab1View extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final double windowBottomPadding = MediaQuery
+        .of(context)
+        .padding
+        .bottom;
+
     return new Material(
       child: new Scaffold(
+        body: new ListView(
+          padding: new EdgeInsets.only(top: 8.0, bottom: windowBottomPadding),
+          children: items.map<Widget>((ListItem item) {
+            return new Text('');
+          }).toList(),
+        ),
       ),
     );
   }
-
 }
+
+Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
+//  Navigator.defaultRouteName: (context) => new HomeTab()
+  HomeTab.routeName: (BuildContext context) => new HomeTab(),
+  TypographyDemo.routeName: (BuildContext context) => new TypographyDemo(),
+};
 
 void main() {
   runApp(new MaterialApp(
     title: 'HomeTab',
     home: new HomeTab(),
+    routes: _routes,
   ));
 }
