@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'typography_demo.dart';
 import 'listItem.dart';
+import 'dart:developer';
+
+const double ItemHeight = 64.0;
+const Color _kFlutterBlue = Color(0xFF003D75);
 
 class NavigationIconView {
   NavigationIconView({
@@ -9,8 +12,7 @@ class NavigationIconView {
     String title,
     Color color,
     TickerProvider vsync,
-  })
-      : _icon = icon,
+  })  : _icon = icon,
         _color = color,
         _title = title,
         item = new BottomNavigationBarItem(
@@ -32,8 +34,8 @@ class NavigationIconView {
   final AnimationController controller;
   CurvedAnimation _animation;
 
-  FadeTransition treansition(BottomNavigationBarType type,
-      BuildContext context) {
+  FadeTransition treansition(
+      BottomNavigationBarType type, BuildContext context) {
     Color iconColor;
     if (type == BottomNavigationBarType.shifting) {
       iconColor = _color;
@@ -47,8 +49,8 @@ class NavigationIconView {
       opacity: _animation,
       child: new SlideTransition(
         position:
-        new Tween<Offset>(begin: const Offset(0.0, 0.02), end: Offset.zero)
-            .animate(_animation),
+            new Tween<Offset>(begin: const Offset(0.0, 0.02), end: Offset.zero)
+                .animate(_animation),
         child: new IconTheme(
             data: new IconThemeData(color: iconColor, size: 120.0),
             child: new Semantics(
@@ -195,10 +197,10 @@ class HomeTabState extends State<HomeTab>
         actions: <Widget>[
           new PopupMenuButton<BottomNavigationBarType>(
               onSelected: (BottomNavigationBarType value) {
-                setState(() {
-                  _type = value;
-                });
-              }, itemBuilder: (BuildContext context) {
+            setState(() {
+              _type = value;
+            });
+          }, itemBuilder: (BuildContext context) {
             return <PopupMenuItem<BottomNavigationBarType>>[
               PopupMenuItem<BottomNavigationBarType>(
                 value: BottomNavigationBarType.fixed,
@@ -251,45 +253,70 @@ class ItemListView extends StatelessWidget {
       )
     ];
     if (item.subtitle != null) {
-      titleChildren.add(new Text(item.subtitle,
-        style: theme.textTheme.body1.copyWith(
-            color: isDark ? Colors.white : const Color(0xff60646b)),));
+      titleChildren.add(new Text(
+        item.subtitle,
+        style: theme.textTheme.body1
+            .copyWith(color: isDark ? Colors.white : const Color(0xff60646b)),
+      ));
     }
-    return new RawMaterialButton(onPressed: (){});
+    return new RawMaterialButton(
+        padding: EdgeInsets.zero,
+        splashColor: theme.primaryColor.withOpacity(0.12),
+        highlightColor: Colors.transparent,
+        child: new Container(
+          constraints: new BoxConstraints(
+            minHeight: ItemHeight * textScaleFactor,
+          ),
+          child: new Row(
+            children: <Widget>[
+              new Container(
+                width: 56.0,
+                height: 56.0,
+                alignment: Alignment.center,
+                child: new Icon(
+                  item.icon,
+                  size: 24.0,
+                  color: isDark ? Colors.white : _kFlutterBlue,
+                ),
+              ),
+              new Expanded(
+                  child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: titleChildren,
+              )),
+              SizedBox(
+                width: 44.0,
+              )
+            ],
+          ),
+        ),
+        onPressed: () {
+          Timeline.instantSync('Start Transition', arguments: <String, String>{
+            'from': '/',
+            'to': item.routeName,
+          });
+          Navigator.pushNamed(context, item.routeName);
+        });
   }
 }
 
 class Tab1View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final double windowBottomPadding = MediaQuery
-        .of(context)
-        .padding
-        .bottom;
+    final double windowBottomPadding = MediaQuery.of(context).padding.bottom;
 
     return new Material(
       child: new Scaffold(
         body: new ListView(
           padding: new EdgeInsets.only(top: 8.0, bottom: windowBottomPadding),
           children: items.map<Widget>((ListItem item) {
-            return new Text('');
+            return new ItemListView(
+              item: item,
+            );
           }).toList(),
         ),
       ),
     );
   }
-}
-
-Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
-//  Navigator.defaultRouteName: (context) => new HomeTab()
-  HomeTab.routeName: (BuildContext context) => new HomeTab(),
-  TypographyDemo.routeName: (BuildContext context) => new TypographyDemo(),
-};
-
-void main() {
-  runApp(new MaterialApp(
-    title: 'HomeTab',
-    home: new HomeTab(),
-    routes: _routes,
-  ));
 }

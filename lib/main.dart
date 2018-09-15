@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter_app/home_bottom_navigation.dart';
 import 'package:flutter_app/cupertino/cupertino_navigation.dart';
-
+import 'typography_demo.dart';
 void main() => runApp(new FlutterView());
 
 TextTheme _buildTextTheme(TextTheme base) {
@@ -41,8 +41,12 @@ class FlutterView extends StatelessWidget {
    */
 
   Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
-    Navigator.defaultRouteName: (context) => new SplashPage()
+    Navigator.defaultRouteName: (context) => new SplashPage(),
+    HomeTab.routeName: (BuildContext context) => new HomeTab(),
+    TypographyDemo.routeName: (BuildContext context) => new TypographyDemo(),
   };
+
+
 
   /**
    * showPerformanceOverlay:是否显示性能监视器
@@ -88,7 +92,6 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     timer = new Timer(new Duration(milliseconds: 1500), () {
 //      Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (context) => new CupertinoNavigation()
