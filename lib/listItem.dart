@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'typography_demo.dart';
 import 'colors_demo.dart';
+import 'material/modal_bottom_sheet_demo.dart';
 
-enum ItemType { STYLES }
+enum ItemType { STYLES ,MATERIAL}
 
 final List<ListItem> items = <ListItem>[
   new ListItem(
@@ -20,6 +21,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.STYLES,
     routeName: TypographyDemo.routeName,
     buildRoute: (BuildContext context) => new TypographyDemo(),
+  ),
+  new ListItem(
+    title: 'Bottom sheet:Modal',
+    subtitle: 'A dismissable bottom sheet',
+    icon: Icons.line_weight,
+    itemType: ItemType.MATERIAL,
+    routeName: ModalBottomSheet.routeName,
+    buildRoute: (BuildContext context) => new ModalBottomSheet(),
   )
 ];
 

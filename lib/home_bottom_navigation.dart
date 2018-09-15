@@ -115,7 +115,7 @@ class HomeTabState extends State<HomeTab>
       new NavigationIconView(
           activeIcon: new CustomIcon(),
           icon: new CustomInactiveIcon(),
-          title: 'Box',
+          title: 'Material',
           color: Colors.deepOrange,
           vsync: this),
       new NavigationIconView(
@@ -217,17 +217,22 @@ class HomeTabState extends State<HomeTab>
       body: IndexedStack(
         children: <Widget>[
           new Center(
-            child: new Tab1View(),
+            child: new TabView(
+              itemType: ItemType.STYLES,
+            ),
           ),
           new Center(
-            child: new Text('2222222'),
-          ),
+              child: new TabView(
+            itemType: ItemType.MATERIAL,
+          )),
           new Center(
-            child: new Text('33333333'),
-          ),
+              child: new TabView(
+            itemType: ItemType.STYLES,
+          )),
           new Center(
-            child: new Text('444444'),
-          ),
+              child: new TabView(
+            itemType: ItemType.STYLES,
+          )),
         ],
         index: _currentIndex,
       ),
@@ -301,7 +306,11 @@ class ItemListView extends StatelessWidget {
   }
 }
 
-class Tab1View extends StatelessWidget {
+class TabView extends StatelessWidget {
+  const TabView({@required this.itemType});
+
+  final ItemType itemType;
+
   @override
   Widget build(BuildContext context) {
     final double windowBottomPadding = MediaQuery.of(context).padding.bottom;
@@ -310,7 +319,9 @@ class Tab1View extends StatelessWidget {
       child: new Scaffold(
         body: new ListView(
           padding: new EdgeInsets.only(top: 8.0, bottom: windowBottomPadding),
-          children: items.map<Widget>((ListItem item) {
+          children: items
+              .where((item) => item.itemType == itemType)
+              .map<Widget>((ListItem item) {
             return new ItemListView(
               item: item,
             );
