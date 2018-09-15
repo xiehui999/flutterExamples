@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter_app/home_bottom_navigation.dart';
-import 'package:flutter_app/cupertino/cupertino_navigation.dart';
-import 'typography_demo.dart';
+import 'listItem.dart';
+
 void main() => runApp(new FlutterView());
 
 TextTheme _buildTextTheme(TextTheme base) {
@@ -40,13 +40,11 @@ class FlutterView extends StatelessWidget {
       ROUTES 通过Navigator.defaultRouteName指定默认路由，此时，不能再添加home，否则报错
    */
 
-  Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
-    Navigator.defaultRouteName: (context) => new SplashPage(),
-    HomeTab.routeName: (BuildContext context) => new HomeTab(),
-    TypographyDemo.routeName: (BuildContext context) => new TypographyDemo(),
-  };
-
-
+  Map<String, WidgetBuilder> _buildRoutes() {
+    return new Map<String, WidgetBuilder>.fromIterable(items,
+        key: (dynamic item) => '${item.routeName}',
+        value: (dynamic item) => item.buildRoute);
+  }
 
   /**
    * showPerformanceOverlay:是否显示性能监视器
@@ -55,6 +53,10 @@ class FlutterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
+      Navigator.defaultRouteName: (context) => new SplashPage(),
+    };
+    _routes.addAll(_buildRoutes());
     return new MaterialApp(
       title: 'Flutter View',
       theme: _buildLightTheme(),
