@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'typography_demo.dart';
 import 'colors_demo.dart';
 import 'material/modal_bottom_sheet_demo.dart';
+import 'material/persistent_bottom_sheet.dart';
 
-enum ItemType { STYLES ,MATERIAL}
+enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
   new ListItem(
@@ -29,10 +30,16 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ModalBottomSheet.routeName,
     buildRoute: (BuildContext context) => new ModalBottomSheet(),
+  ),
+  new ListItem(
+    title: 'Bottom sheet:Persistent',
+    subtitle: 'A bottom sheet that sticks around',
+    icon: Icons.line_weight,
+    itemType: ItemType.MATERIAL,
+    routeName: PersistentBottomSheet.routeName,
+    buildRoute: (BuildContext context) => new PersistentBottomSheet(),
   )
 ];
-
-
 
 class ListItem {
   const ListItem(
