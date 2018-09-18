@@ -12,3 +12,6 @@ For help getting started with Flutter, view our online
 - flutter packages get  安装依赖
 - flutter run 运行应用 默认入口main
 - flutter run lib/tabbed_app_bar.dart  直接运行指定文件
+## 问题
+- Waiting for another flutter command to release the startup lock...
+去flutter/bin/cache文件夹删除lockfile文件

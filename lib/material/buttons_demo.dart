@@ -7,6 +7,12 @@ const String _raisedText =
 
 const String _raisedCode = 'buttons_raised';
 
+const String _flatText = 'A flat button displays an ink splash on press '
+    'but does not lift. Use flat buttons on toolbars, in dialogs and '
+    'inline with padding';
+
+const String _flatCode = 'buttons_flat';
+
 class ButtonsDemo extends StatefulWidget {
   static const String routeName = '/material/buttons';
 
@@ -34,6 +40,14 @@ class ButtonsDemoState extends State<ButtonsDemo> {
         ),
         exampleCodeTag: _raisedCode,
       ),
+      ComponentDemoTabData(
+          tabName: 'Flat',
+          description: _flatText,
+          exampleCodeTag: _flatCode,
+          demoWidget: ButtonTheme.fromButtonThemeData(
+            data: buttonTheme,
+            child: buildFlatButton(),
+          ))
     ];
 
     return TabbedComponentDemoScaffold(
@@ -90,6 +104,40 @@ Widget buildRaisedButton() {
             ),
           ],
         ),
+      ],
+    ),
+  );
+}
+
+Widget buildFlatButton() {
+  return Align(
+    alignment: Alignment(0.0, -0.2),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        ButtonBar(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            FlatButton(onPressed: () {}, child: Text('Flat Button')),
+            const FlatButton(onPressed: null, child: Text('Disable'))
+          ],
+        ),
+        ButtonBar(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            FlatButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.add_circle_outline, size: 18.0),
+                label: Text('Flat Button')),
+            FlatButton.icon(
+                onPressed: null,
+                icon: Icon(
+                  Icons.add_circle_outline,
+                  size: 18.0,
+                ),
+                label: Text('Disable'))
+          ],
+        )
       ],
     ),
   );

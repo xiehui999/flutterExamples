@@ -31,16 +31,14 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
 
   void _showExampleCode(BuildContext context) {
     final String tag =
-        demos[DefaultTabController
-            .of(context)
-            .index].exampleCodeTag;
+        demos[DefaultTabController.of(context).index].exampleCodeTag;
     if (tag != null) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (BuildContext context) {
-            return FullScreenCodeDialog(
-              exampleCodeTag: tag,
-            );
-          }));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => FullScreenCodeDialog(
+                    exampleCodeTag: tag,
+                  )));
     }
   }
 
@@ -53,32 +51,43 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
             title: Text(title),
             actions: (actions ?? <Widget>[])
               ..addAll(
-                <Widget>[Builder(builder: (BuildContext context) {
-                  return IconButton(icon: Icon(Icons.code),
-                      tooltip: 'show example code',
-                      onPressed: () {
-                        _showExampleCode(context);
-                      });
-                })
+                <Widget>[
+                  Builder(builder: (BuildContext context) {
+                    return IconButton(
+                        icon: Icon(Icons.code),
+                        tooltip: 'show example code',
+                        onPressed: () {
+                          _showExampleCode(context);
+                        });
+                  })
                 ],
               ),
-            bottom: TabBar(isScrollable: true,
-                tabs: demos.map((ComponentDemoTabData data) {
-                  return Tab(text: data.tabName,);
-                }).toList()),
+            bottom: TabBar(
+              isScrollable: true,
+              tabs: demos
+                  .map((ComponentDemoTabData data) => Tab(text: data.tabName))
+                  .toList(),
+            ),
           ),
-          body: TabBarView(children: demos.map((ComponentDemoTabData demo) {
-            return SafeArea(top: false, bottom: false, child: Column(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.all(16.0),
-                  child: Text(demo.description, style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead,),),
-                Expanded(child: demo.demoWidget)
-              ],
-            ));
-          }).toList()),
+          body: TabBarView(
+            children: demos.map((ComponentDemoTabData demo) {
+              return SafeArea(
+                  top: false,
+                  bottom: false,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text(
+                          demo.description,
+                          style: Theme.of(context).textTheme.subhead,
+                        ),
+                      ),
+                      Expanded(child: demo.demoWidget)
+                    ],
+                  ));
+            }).toList(),
+          ),
         ));
   }
 }
@@ -100,6 +109,8 @@ class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
   //widget  生命周期，在initState之后执行，只执行一次
   @override
   void didChangeDependencies() {
+    print('exampleCodeTag');
+    print(widget.exampleCodeTag);
     getExampleCode(widget.exampleCodeTag, DefaultAssetBundle.of(context))
         .then<Null>((String code) {
       if (mounted) {
@@ -114,11 +125,9 @@ class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
   @override
   Widget build(BuildContext context) {
     final SyntaxHighlighterStyle style =
-    Theme
-        .of(context)
-        .brightness == Brightness.dark
-        ? SyntaxHighlighterStyle.darkThemeStyle()
-        : SyntaxHighlighterStyle.lightThemeStyle();
+        Theme.of(context).brightness == Brightness.dark
+            ? SyntaxHighlighterStyle.darkThemeStyle()
+            : SyntaxHighlighterStyle.lightThemeStyle();
     Widget body;
     if (exampleCode == null) {
       body = const Center(
@@ -132,17 +141,22 @@ class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
               text: TextSpan(
                   style: TextStyle(fontFamily: 'monospace', fontSize: 10.0),
                   children: <TextSpan>[
-                    DartSyntaxHighlighter(style).format(exampleCode)
-                  ])),
+                DartSyntaxHighlighter(style).format(exampleCode)
+              ])),
         ),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.clear,
-          semanticLabel: 'Close',
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.clear,
+            semanticLabel: 'Close',
+          ),
         ),
         title: Text('Example code'),
       ),

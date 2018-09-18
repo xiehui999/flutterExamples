@@ -1,23 +1,28 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:developer';
 
-const String _kStartTag = '// START';
-const String _kEndTag = '// END';
+const String _kStartTag = '//START';
+const String _kEndTag = '//END';
 Map<String, String> _exampleCode;
 
 Future<String> getExampleCode(String tag, AssetBundle bundle) async {
-  if (_exampleCode == null) {
-    await _parseExampleCode(bundle);
-    return _exampleCode[tag];
-  }
+  if (_exampleCode == null) await _parseExampleCode(bundle);
+  return _exampleCode[tag];
 }
 
 Future<Null> _parseExampleCode(AssetBundle bundle) async {
+  print("lines,-----------111111");
+
   final String code = await bundle.loadString('lib/example_code.dart') ??
       '// lib/example_code.dart not found\n';
+//  debugger();
   _exampleCode = <String, String>{};
   final List<String> lines = code.split('\n');
+  print("lines,-----------");
+  print(lines.length);
+  print(lines);
   List<String> codeBlock;
   String codeTag;
   for (String line in lines) {
@@ -26,7 +31,7 @@ Future<Null> _parseExampleCode(AssetBundle bundle) async {
         codeBlock = <String>[];
         codeTag = line.substring(_kStartTag.length).trim();
       }
-    }else{
+    } else {
       if (line.startsWith(_kEndTag)) {
         // Add the block.
         _exampleCode[codeTag] = codeBlock.join('\n');

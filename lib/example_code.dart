@@ -5,16 +5,16 @@ class ButtonsDemo {
   BuildContext context;
 
   void buttons() {
-    // START buttons_raised
+//START buttons_raised
     RaisedButton(child: Text('Button title'), onPressed: () {});
     const RaisedButton(child: Text('Button title'), onPressed: null);
 
     //with icon
     RaisedButton.icon(
         onPressed: () {}, icon: Icon(Icons.add), label: Text('Button title'));
-// END
+//END
 
-// START buttons_outline
+//START buttons_outline
     OutlineButton(
       onPressed: () {},
       child: Text('Button title'),
@@ -28,14 +28,14 @@ class ButtonsDemo {
         ),
         label: Text('Button title'));
 
-    // END
+//END
 
-// START buttons_flat
+//START buttons_flat
     FlatButton(onPressed: () {}, child: Text('Button title'));
 
     const FlatButton(onPressed: null, child: Text('Button title'));
-// END
-// START buttons_dropdown
+//END
+//START buttons_dropdown
 
     String dropdownValue;
     DropdownButton<String>(
@@ -52,8 +52,8 @@ class ButtonsDemo {
         );
       }).toList(),
     );
-// END
-
+//END
+//START
     bool value;
     IconButton(
       icon: Icon(Icons.thumb_up),
@@ -62,9 +62,9 @@ class ButtonsDemo {
       },
       color: value ? Theme.of(context).primaryColor : null,
     );
-// END
+//END
 
-// START buttons_action
+//START buttons_action
 
     Scaffold(
       appBar: AppBar(
@@ -75,7 +75,7 @@ class ButtonsDemo {
         child: Icon(Icons.add),
       ),
     );
-    // END
+//END
   }
 }
 
@@ -137,7 +137,6 @@ class SelectionControls {
 
 // Create a disabled switch.
 // Switches are disabled when onChanged isn't
-// specified or null.
     const Switch(value: false, onChanged: null);
   }
 }
