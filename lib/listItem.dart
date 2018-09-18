@@ -3,6 +3,7 @@ import 'typography_demo.dart';
 import 'colors_demo.dart';
 import 'material/modal_bottom_sheet_demo.dart';
 import 'material/persistent_bottom_sheet.dart';
+import 'material/buttons_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -22,6 +23,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.STYLES,
     routeName: TypographyDemo.routeName,
     buildRoute: (BuildContext context) => new TypographyDemo(),
+  ),
+  new ListItem(
+    title: 'buttons',
+    subtitle: 'buttons',
+    icon: Icons.line_weight,
+    itemType: ItemType.MATERIAL,
+    routeName: ButtonsDemo.routeName,
+    buildRoute: (BuildContext context) => new ButtonsDemo(),
   ),
   new ListItem(
     title: 'Bottom sheet:Modal',
