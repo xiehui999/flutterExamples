@@ -6,7 +6,7 @@ import 'material/persistent_bottom_sheet.dart';
 import 'material/buttons_demo.dart';
 import 'material/tabs_fab_demo.dart';
 import 'material/cards_demo.dart';
-
+import 'material/elevation_demo.dart';
 enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
@@ -66,6 +66,15 @@ final List<ListItem> items = <ListItem>[
     routeName: CardsDemo.routeName,
     buildRoute: (BuildContext context) => new CardsDemo(),
   ),
+  new ListItem(
+    title: 'Elevations',
+    subtitle: 'Shadow values on Cards',
+    icon: Icons.rounded_corner,
+    itemType: ItemType.MATERIAL,
+
+    routeName: ElevationDemo.routeName,
+    buildRoute: (BuildContext context) => ElevationDemo(),
+  )
 ];
 
 class ListItem {

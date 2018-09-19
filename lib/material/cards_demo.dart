@@ -152,8 +152,8 @@ class CardsDemoState extends State<CardsDemo> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(16.0),
                               topRight: Radius.circular(16.0),
-                              bottomLeft: Radius.circular(2.0),
-                              bottomRight: Radius.circular(2.0)));
+                              bottomLeft: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0)));
                 });
               })
         ],
