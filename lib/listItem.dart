@@ -4,7 +4,7 @@ import 'colors_demo.dart';
 import 'material/modal_bottom_sheet_demo.dart';
 import 'material/persistent_bottom_sheet.dart';
 import 'material/buttons_demo.dart';
-
+import 'material/tabs_fab_demo.dart';
 enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
@@ -26,11 +26,20 @@ final List<ListItem> items = <ListItem>[
   ),
   new ListItem(
     title: 'buttons',
-    subtitle: 'buttons',
-    icon: Icons.line_weight,
+    subtitle: 'Flat, raised, dropdown, and more',
+    icon: Icons.update,
     itemType: ItemType.MATERIAL,
     routeName: ButtonsDemo.routeName,
     buildRoute: (BuildContext context) => new ButtonsDemo(),
+  ),
+  new ListItem(
+    title: 'Buttons: Floating Action Button',
+    subtitle: 'FAB with transitions',
+    icon: Icons.line_style,
+    itemType: ItemType.MATERIAL,
+    routeName: TabsFabDemo.routeName,
+    buildRoute: (BuildContext context) => new TabsFabDemo(),
+
   ),
   new ListItem(
     title: 'Bottom sheet:Modal',
@@ -43,7 +52,7 @@ final List<ListItem> items = <ListItem>[
   new ListItem(
     title: 'Bottom sheet:Persistent',
     subtitle: 'A bottom sheet that sticks around',
-    icon: Icons.line_weight,
+    icon: Icons.euro_symbol,
     itemType: ItemType.MATERIAL,
     routeName: PersistentBottomSheet.routeName,
     buildRoute: (BuildContext context) => new PersistentBottomSheet(),
