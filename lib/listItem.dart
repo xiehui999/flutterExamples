@@ -5,6 +5,8 @@ import 'material/modal_bottom_sheet_demo.dart';
 import 'material/persistent_bottom_sheet.dart';
 import 'material/buttons_demo.dart';
 import 'material/tabs_fab_demo.dart';
+import 'material/cards_demo.dart';
+
 enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
@@ -39,7 +41,6 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: TabsFabDemo.routeName,
     buildRoute: (BuildContext context) => new TabsFabDemo(),
-
   ),
   new ListItem(
     title: 'Bottom sheet:Modal',
@@ -56,7 +57,15 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: PersistentBottomSheet.routeName,
     buildRoute: (BuildContext context) => new PersistentBottomSheet(),
-  )
+  ),
+  new ListItem(
+    title: 'Cards',
+    subtitle: 'Baseline cards with rounded corners',
+    icon: Icons.donut_small,
+    itemType: ItemType.MATERIAL,
+    routeName: CardsDemo.routeName,
+    buildRoute: (BuildContext context) => new CardsDemo(),
+  ),
 ];
 
 class ListItem {
