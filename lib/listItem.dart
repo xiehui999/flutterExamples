@@ -7,6 +7,7 @@ import 'material/buttons_demo.dart';
 import 'material/tabs_fab_demo.dart';
 import 'material/cards_demo.dart';
 import 'material/elevation_demo.dart';
+import 'material/dialog_demo.dart';
 enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
@@ -67,11 +68,18 @@ final List<ListItem> items = <ListItem>[
     buildRoute: (BuildContext context) => new CardsDemo(),
   ),
   new ListItem(
+    title: 'Dialog',
+    subtitle: 'dialog',
+    icon: Icons.important_devices,
+    itemType: ItemType.MATERIAL,
+    routeName: DialogDemo.routeName,
+    buildRoute: (BuildContext context) => new DialogDemo(),
+  ),
+  new ListItem(
     title: 'Elevations',
     subtitle: 'Shadow values on Cards',
     icon: Icons.rounded_corner,
     itemType: ItemType.MATERIAL,
-
     routeName: ElevationDemo.routeName,
     buildRoute: (BuildContext context) => ElevationDemo(),
   )
