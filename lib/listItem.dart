@@ -8,6 +8,7 @@ import 'material/tabs_fab_demo.dart';
 import 'material/cards_demo.dart';
 import 'material/elevation_demo.dart';
 import 'material/dialog_demo.dart';
+import 'material/icons_demo.dart';
 enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
@@ -82,6 +83,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ElevationDemo.routeName,
     buildRoute: (BuildContext context) => ElevationDemo(),
+  ),
+  new ListItem(
+    title: 'Icons',
+    subtitle: 'Enabled and disabled icons with opacity',
+    icon: Icons.play_for_work,
+    itemType: ItemType.MATERIAL,
+    routeName: IconsDemo.routeName,
+    buildRoute: (BuildContext context) => IconsDemo(),
   )
 ];
 
