@@ -13,6 +13,7 @@ import 'material/menu_demo.dart';
 import 'material/page_selector_demo.dart';
 import 'material/progress_indicator_demo.dart';
 import 'material/tooltip_demo.dart';
+import 'material/snack_bar_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -120,6 +121,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ProgressIndicatorDemo.routeName,
     buildRoute: (BuildContext context) => ProgressIndicatorDemo(),
+  ),
+  new ListItem(
+    title: 'SnackBar',
+    subtitle: 'Temporary messaging',
+    icon: Icons.pregnant_woman,
+    itemType: ItemType.MATERIAL,
+    routeName: SnackBarDemo.routeName,
+    buildRoute: (BuildContext context) => SnackBarDemo(),
   ),
   new ListItem(
     title: 'Tooltips',

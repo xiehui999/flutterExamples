@@ -50,7 +50,7 @@ class TooltipDemo extends StatelessWidget {
                       color: themeData.iconTheme.color,
                       onPressed: () {
                         Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text('That was an ordinary tap')))
+                            SnackBar(content: Text('That was an ordinary tap')));
                       }),
                 )
               ].map((Widget widget) {
