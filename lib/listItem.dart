@@ -12,6 +12,7 @@ import 'material/icons_demo.dart';
 import 'material/menu_demo.dart';
 import 'material/page_selector_demo.dart';
 import 'material/progress_indicator_demo.dart';
+import 'material/tooltip_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -119,6 +120,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ProgressIndicatorDemo.routeName,
     buildRoute: (BuildContext context) => ProgressIndicatorDemo(),
+  ),
+  new ListItem(
+    title: 'Tooltips',
+    subtitle: 'Short message displayed on long-press',
+    icon: Icons.zoom_out,
+    itemType: ItemType.MATERIAL,
+    routeName: TooltipDemo.routeName,
+    buildRoute: (BuildContext context) => TooltipDemo(),
   ),
 ];
 
