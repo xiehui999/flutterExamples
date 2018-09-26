@@ -10,6 +10,8 @@ import 'material/elevation_demo.dart';
 import 'material/dialog_demo.dart';
 import 'material/icons_demo.dart';
 import 'material/menu_demo.dart';
+import 'material/page_selector_demo.dart';
+
 enum ItemType { STYLES, MATERIAL }
 
 final List<ListItem> items = <ListItem>[
@@ -100,7 +102,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: MenuDemo.routeName,
     buildRoute: (BuildContext context) => MenuDemo(),
-  )
+  ), new ListItem(
+    title: 'Pagination',
+    subtitle: 'PageView with indicator',
+    icon: Icons.all_out,
+    itemType: ItemType.MATERIAL,
+    routeName: PageSelectorDemo.routeName,
+    buildRoute: (BuildContext context) => PageSelectorDemo(),
+  ),
 ];
 
 class ListItem {
