@@ -11,6 +11,7 @@ import 'material/dialog_demo.dart';
 import 'material/icons_demo.dart';
 import 'material/menu_demo.dart';
 import 'material/page_selector_demo.dart';
+import 'material/progress_indicator_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -102,13 +103,22 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: MenuDemo.routeName,
     buildRoute: (BuildContext context) => MenuDemo(),
-  ), new ListItem(
+  ),
+  new ListItem(
     title: 'Pagination',
     subtitle: 'PageView with indicator',
     icon: Icons.all_out,
     itemType: ItemType.MATERIAL,
     routeName: PageSelectorDemo.routeName,
     buildRoute: (BuildContext context) => PageSelectorDemo(),
+  ),
+  new ListItem(
+    title: 'Progress indicators',
+    subtitle: 'Linear,circular,indeterminate ',
+    icon: Icons.gif,
+    itemType: ItemType.MATERIAL,
+    routeName: ProgressIndicatorDemo.routeName,
+    buildRoute: (BuildContext context) => ProgressIndicatorDemo(),
   ),
 ];
 
