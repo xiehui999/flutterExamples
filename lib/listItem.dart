@@ -15,6 +15,7 @@ import 'material/progress_indicator_demo.dart';
 import 'material/tooltip_demo.dart';
 import 'material/snack_bar_demo.dart';
 import 'material/date_and_time_picker_demo.dart';
+import 'material/chip_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -74,6 +75,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: CardsDemo.routeName,
     buildRoute: (BuildContext context) => new CardsDemo(),
+  ),
+  new ListItem(
+    title: 'Chips',
+    subtitle: 'abeled with delete buttons and avatars',
+    icon: Icons.date_range,
+    itemType: ItemType.MATERIAL,
+    routeName: ChipDemo.routeName,
+    buildRoute: (BuildContext context) => new ChipDemo(),
   ),
   new ListItem(
     title: 'Dialog',

@@ -41,7 +41,11 @@ flutter:
       - lib/example_code.dart
       - assets/flutter-mark-square-64.png
       - assets/india_chettinad_silk_market.png
-      - assets/india_thanjavur_market.png
+      - assets/square/ali.png
+      - assets/square/prter.png
+      - assets/square/sandra.png
+      - assets/square/stella.png
+      - assets/square/trevor.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
