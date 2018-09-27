@@ -14,6 +14,7 @@ import 'material/page_selector_demo.dart';
 import 'material/progress_indicator_demo.dart';
 import 'material/tooltip_demo.dart';
 import 'material/snack_bar_demo.dart';
+import 'material/date_and_time_picker_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -113,6 +114,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: PageSelectorDemo.routeName,
     buildRoute: (BuildContext context) => PageSelectorDemo(),
+  ),
+  new ListItem(
+    title: 'Pickers',
+    subtitle: 'Date and time selection widgets',
+    icon: Icons.all_out,
+    itemType: ItemType.MATERIAL,
+    routeName: DateAndTimePickerDemo.routeName,
+    buildRoute: (BuildContext context) => DateAndTimePickerDemo(),
   ),
   new ListItem(
     title: 'Progress indicators',
