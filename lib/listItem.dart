@@ -16,6 +16,7 @@ import 'material/tooltip_demo.dart';
 import 'material/snack_bar_demo.dart';
 import 'material/date_and_time_picker_demo.dart';
 import 'material/chip_demo.dart';
+import 'material/data_table_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -83,6 +84,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ChipDemo.routeName,
     buildRoute: (BuildContext context) => new ChipDemo(),
+  ),
+  new ListItem(
+    title: 'Data tables',
+    subtitle: 'Rows and columns',
+    icon: Icons.touch_app,
+    itemType: ItemType.MATERIAL,
+    routeName: DataTableDemo.routeName,
+    buildRoute: (BuildContext context) => new DataTableDemo(),
   ),
   new ListItem(
     title: 'Dialog',
