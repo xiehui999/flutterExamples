@@ -18,6 +18,7 @@ import 'material/date_and_time_picker_demo.dart';
 import 'material/chip_demo.dart';
 import 'material/data_table_demo.dart';
 import 'material/two_level_list_demo.dart';
+import 'material/overscroll_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -157,6 +158,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ProgressIndicatorDemo.routeName,
     buildRoute: (BuildContext context) => ProgressIndicatorDemo(),
+  ),
+  new ListItem(
+    title: 'Pull to refresh',
+    subtitle: 'Refresh indicators',
+    icon: Icons.refresh,
+    itemType: ItemType.MATERIAL,
+    routeName: OverscrollDemo.routeName,
+    buildRoute: (BuildContext context) => OverscrollDemo(),
   ),
   new ListItem(
     title: 'SnackBar',
