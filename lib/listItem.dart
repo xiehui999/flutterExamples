@@ -17,6 +17,7 @@ import 'material/snack_bar_demo.dart';
 import 'material/date_and_time_picker_demo.dart';
 import 'material/chip_demo.dart';
 import 'material/data_table_demo.dart';
+import 'material/two_level_list_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -108,6 +109,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ElevationDemo.routeName,
     buildRoute: (BuildContext context) => ElevationDemo(),
+  ),
+  new ListItem(
+    title: 'Expand/collapse list control',
+    subtitle: 'A list with one sub-list level',
+    icon: Icons.lightbulb_outline,
+    itemType: ItemType.MATERIAL,
+    routeName: TwoLevelListDemo.routeName,
+    buildRoute: (BuildContext context) => TwoLevelListDemo(),
   ),
   new ListItem(
     title: 'Icons',
