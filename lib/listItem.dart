@@ -19,6 +19,7 @@ import 'material/chip_demo.dart';
 import 'material/data_table_demo.dart';
 import 'material/two_level_list_demo.dart';
 import 'material/overscroll_demo.dart';
+import 'material/slide_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -166,6 +167,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: OverscrollDemo.routeName,
     buildRoute: (BuildContext context) => OverscrollDemo(),
+  ),
+  new ListItem(
+    title: 'Sliders',
+    subtitle: 'Widgets for selecting a value by swiping',
+    icon: Icons.pregnant_woman,
+    itemType: ItemType.MATERIAL,
+    routeName: SliderDemo.routeName,
+    buildRoute: (BuildContext context) => SliderDemo(),
   ),
   new ListItem(
     title: 'SnackBar',
