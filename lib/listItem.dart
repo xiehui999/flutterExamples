@@ -20,6 +20,7 @@ import 'material/data_table_demo.dart';
 import 'material/two_level_list_demo.dart';
 import 'material/overscroll_demo.dart';
 import 'material/slide_demo.dart';
+import 'material/tabs_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -183,6 +184,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: SnackBarDemo.routeName,
     buildRoute: (BuildContext context) => SnackBarDemo(),
+  ),
+  new ListItem(
+    title: 'Tabs',
+    subtitle: 'Tabs with independently scrollable views',
+    icon: Icons.http,
+    itemType: ItemType.MATERIAL,
+    routeName: TabsDemo.routeName,
+    buildRoute: (BuildContext context) => TabsDemo(),
   ),
   new ListItem(
     title: 'Tooltips',

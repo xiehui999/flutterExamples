@@ -42,10 +42,33 @@ flutter:
       - assets/flutter-mark-square-64.png
       - assets/india_chettinad_silk_market.png
       - assets/square/ali.png
-      - assets/square/prter.png
+      - assets/square/peter.png
       - assets/square/sandra.png
       - assets/square/stella.png
       - assets/square/trevor.png
+      - assets/products/backpack.png
+      - assets/products/belt.png
+      - assets/products/cup.png
+      - assets/products/deskset.png
+      - assets/products/dress.png
+      - assets/products/earrings.png
+      - assets/products/flatwear.png
+      - assets/products/hat.png
+      - assets/products/jacket.png
+      - assets/products/jumper.png
+      - assets/products/kitchen_quattro.png
+      - assets/products/napkins.png
+      - assets/products/planters.png
+      - assets/products/platter.png
+      - assets/products/scarf.png
+      - assets/products/shirt.png
+      - assets/products/sunnies.png
+      - assets/products/sweater.png
+      - assets/products/sweats.png
+      - assets/products/table.png
+      - assets/products/teaset.png
+      - assets/products/top.png
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
