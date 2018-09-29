@@ -80,7 +80,7 @@ class ScrollableTabsDemoState extends State<ScrollableTabsDemo>
         return ShapeDecoration(shape: StadiumBorder(
             side: BorderSide(color: Colors.white24, width: 2.0)) +
             StadiumBorder(
-                side: BorderSide(color: Colors.transparent, width: 4.0)))
+                side: BorderSide(color: Colors.transparent, width: 4.0)));
     }
     return null;
   }

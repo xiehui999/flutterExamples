@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 import 'example_code_parser.dart';
 import 'syntax_highlighter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ComponentDemoTabData {
   ComponentDemoTabData(
-      {this.demoWidget, this.exampleCodeTag, this.description, this.tabName});
+      {this.demoWidget,
+      this.exampleCodeTag,
+      this.description,
+      this.tabName,
+      this.documentationUrl});
 
   final Widget demoWidget;
   final String exampleCodeTag;
   final String description;
   final String tabName;
+  final String documentationUrl;
 
   @override
   bool operator ==(Object other) {
     if (other.runtimeType != runtimeType) return false;
     final ComponentDemoTabData typeOther = other;
-    return typeOther.tabName == tabName && typeOther.description == description;
+    return typeOther.tabName == tabName &&
+        typeOther.description == description &&
+        typeOther.documentationUrl == documentationUrl;
   }
 
   @override
-  int get hashCode => hashValues(tabName.hashCode, description.hashCode);
+  int get hashCode => hashValues(tabName, description, documentationUrl);
 }
 
 class TabbedComponentDemoScaffold extends StatelessWidget {
@@ -42,6 +50,14 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
     }
   }
 
+  void _showApiDocumentation(BuildContext context) {
+    final String url =
+        demos[DefaultTabController.of(context).index].documentationUrl;
+    if (url != null) {
+      launch(url, forceWebView: true);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -52,6 +68,12 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
             actions: (actions ?? <Widget>[])
               ..addAll(
                 <Widget>[
+                  Builder(builder: (BuildContext context) {
+                    return IconButton(
+                        icon: Icon(Icons.library_books), onPressed: (){
+                          _showApiDocumentation(context);
+                    });
+                  }),
                   Builder(builder: (BuildContext context) {
                     return IconButton(
                         icon: Icon(Icons.code),

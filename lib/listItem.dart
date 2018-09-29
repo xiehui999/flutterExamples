@@ -22,6 +22,7 @@ import 'material/overscroll_demo.dart';
 import 'material/slide_demo.dart';
 import 'material/tabs_demo.dart';
 import 'material/scrollable_tabs_demo.dart';
+import 'material/selection_controls_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -169,6 +170,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: OverscrollDemo.routeName,
     buildRoute: (BuildContext context) => OverscrollDemo(),
+  ),
+  new ListItem(
+    title: 'Selection controls',
+    subtitle: 'Checkboxes, radio buttons, and switches',
+    icon: Icons.donut_large,
+    itemType: ItemType.MATERIAL,
+    routeName: SelectionControlsDemo.routeName,
+    buildRoute: (BuildContext context) => SelectionControlsDemo(),
   ),
   new ListItem(
     title: 'Sliders',
