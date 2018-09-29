@@ -21,6 +21,7 @@ import 'material/two_level_list_demo.dart';
 import 'material/overscroll_demo.dart';
 import 'material/slide_demo.dart';
 import 'material/tabs_demo.dart';
+import 'material/scrollable_tabs_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -192,6 +193,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: TabsDemo.routeName,
     buildRoute: (BuildContext context) => TabsDemo(),
+  ),
+  new ListItem(
+    title: 'Tabs: Scrolling',
+    subtitle: 'Tab bar that scrolls',
+    icon: Icons.http,
+    itemType: ItemType.MATERIAL,
+    routeName: ScrollableTabsDemo.routeName,
+    buildRoute: (BuildContext context) => ScrollableTabsDemo(),
   ),
   new ListItem(
     title: 'Tooltips',
