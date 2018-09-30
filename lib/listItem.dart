@@ -24,6 +24,7 @@ import 'material/tabs_demo.dart';
 import 'material/scrollable_tabs_demo.dart';
 import 'material/selection_controls_demo.dart';
 import 'material/drawer_demo.dart';
+import 'material/backdrop_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -43,6 +44,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.STYLES,
     routeName: TypographyDemo.routeName,
     buildRoute: (BuildContext context) => new TypographyDemo(),
+  ),
+  new ListItem(
+    title: 'Backdrop',
+    subtitle: 'Select a front layer from back layer',
+    icon: Icons.watch_later,
+    itemType: ItemType.MATERIAL,
+    routeName: BackdropDemo.routeName,
+    buildRoute: (BuildContext context) => new BackdropDemo(),
   ),
   new ListItem(
     title: 'buttons',
@@ -146,7 +155,8 @@ final List<ListItem> items = <ListItem>[
     icon: Icons.all_out,
     itemType: ItemType.MATERIAL,
     routeName: DrawerDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/material/Drawer-class.html',
+    documentationUrl:
+        'https://docs.flutter.io/flutter/material/Drawer-class.html',
     buildRoute: (BuildContext context) => DrawerDemo(),
   ),
   new ListItem(
