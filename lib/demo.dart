@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'example_code_parser.dart';
 import 'syntax_highlighter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_app/listItem.dart';
 
 class ComponentDemoTabData {
   ComponentDemoTabData(
@@ -70,9 +71,10 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
                 <Widget>[
                   Builder(builder: (BuildContext context) {
                     return IconButton(
-                        icon: Icon(Icons.library_books), onPressed: (){
+                        icon: Icon(Icons.library_books),
+                        onPressed: () {
                           _showApiDocumentation(context);
-                    });
+                        });
                   }),
                   Builder(builder: (BuildContext context) {
                     return IconButton(
@@ -184,5 +186,23 @@ class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
       ),
       body: body,
     );
+  }
+}
+
+class MaterialDemoDocumentationButton extends StatelessWidget {
+  MaterialDemoDocumentationButton(String routeName, {Key key})
+      : documentationUrl = kDemoDocumentationUrl[routeName],
+        assert(kDemoDocumentationUrl[routeName] != null,
+            'A documentation URL was not specified for demo route $routeName in kAllGalleryDemos',),
+        super(key: key);
+  final String documentationUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+        icon: Icon(Icons.library_books),
+        onPressed: () {
+          launch(documentationUrl, forceWebView: true);
+        });
   }
 }

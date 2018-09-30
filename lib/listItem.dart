@@ -23,6 +23,7 @@ import 'material/slide_demo.dart';
 import 'material/tabs_demo.dart';
 import 'material/scrollable_tabs_demo.dart';
 import 'material/selection_controls_demo.dart';
+import 'material/drawer_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -140,6 +141,15 @@ final List<ListItem> items = <ListItem>[
     buildRoute: (BuildContext context) => MenuDemo(),
   ),
   new ListItem(
+    title: 'Navigation drawer',
+    subtitle: 'Navigation drawer with standard header',
+    icon: Icons.all_out,
+    itemType: ItemType.MATERIAL,
+    routeName: DrawerDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/material/Drawer-class.html',
+    buildRoute: (BuildContext context) => DrawerDemo(),
+  ),
+  new ListItem(
     title: 'Pagination',
     subtitle: 'PageView with indicator',
     icon: Icons.all_out,
@@ -228,6 +238,7 @@ class ListItem {
       this.icon,
       this.itemType,
       this.routeName,
+      this.documentationUrl,
       this.buildRoute});
 
   final String title;
@@ -236,4 +247,12 @@ class ListItem {
   final ItemType itemType;
   final String routeName;
   final WidgetBuilder buildRoute;
+  final String documentationUrl;
 }
+
+final Map<String, String> kDemoDocumentationUrl =
+    Map<String, String>.fromIterable(
+  items.where((ListItem demo) => demo.documentationUrl != null),
+  key: (dynamic demo) => demo.routeName,
+  value: (dynamic demo) => demo.documentationUrl,
+);

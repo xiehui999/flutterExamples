@@ -83,6 +83,8 @@ class SelectionControls {
   void setState(VoidCallback callback) {}
 
   void selectionControls() {
+//START selectioncontrols_checkbox
+// Member variable holding the checkbox's value.
     bool checkboxValue = false;
 
 // Create a checkbox.
@@ -95,6 +97,7 @@ class SelectionControls {
       },
     );
 
+// Create a tristate checkbox.
     Checkbox(
       tristate: true,
       value: checkboxValue,
@@ -104,15 +107,25 @@ class SelectionControls {
         });
       },
     );
-    const Checkbox(value: false, onChanged: null);
 
+// Create a disabled checkbox.
+// Checkboxes are disabled when onChanged isn't
+// specified or null.
+    const Checkbox(value: false, onChanged: null);
+//END
+
+//START selectioncontrols_radio
+// Member variable holding value.
     int radioValue = 0;
+
+// Method setting value.
     void handleRadioValueChanged(int value) {
       setState(() {
         radioValue = value;
       });
     }
 
+// Creates a set of radio buttons.
     Row(children: <Widget>[
       Radio<int>(
           value: 0, groupValue: radioValue, onChanged: handleRadioValueChanged),
@@ -122,8 +135,12 @@ class SelectionControls {
           value: 2, groupValue: radioValue, onChanged: handleRadioValueChanged)
     ]);
 
+// Creates a disabled radio button.
     const Radio<int>(value: 0, groupValue: 0, onChanged: null);
+//END
 
+//START selectioncontrols_switch
+// Member variable holding value.
     bool switchValue = false;
 
 // Create a switch.
@@ -137,6 +154,8 @@ class SelectionControls {
 
 // Create a disabled switch.
 // Switches are disabled when onChanged isn't
+// specified or null.
     const Switch(value: false, onChanged: null);
+//END
   }
 }
