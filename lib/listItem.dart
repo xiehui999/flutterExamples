@@ -25,6 +25,7 @@ import 'material/scrollable_tabs_demo.dart';
 import 'material/selection_controls_demo.dart';
 import 'material/drawer_demo.dart';
 import 'material/backdrop_demo.dart';
+import 'material/leave_behind_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -141,6 +142,13 @@ final List<ListItem> items = <ListItem>[
     routeName: IconsDemo.routeName,
     buildRoute: (BuildContext context) => IconsDemo(),
   ),
+  new ListItem(title: 'Lists: leave-behind list items',
+    subtitle: 'List items with hidden actions',
+    icon: Icons.g_translate,
+    itemType: ItemType.MATERIAL,
+    routeName: LeaveBehindDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/widgets/Dismissible-class.html',
+    buildRoute: (BuildContext context) => const LeaveBehindDemo(),),
   new ListItem(
     title: 'Menus',
     subtitle: 'Menu buttons and simple menus',
