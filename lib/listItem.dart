@@ -26,6 +26,7 @@ import 'material/selection_controls_demo.dart';
 import 'material/drawer_demo.dart';
 import 'material/backdrop_demo.dart';
 import 'material/leave_behind_demo.dart';
+import 'material/list_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -141,6 +142,15 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: IconsDemo.routeName,
     buildRoute: (BuildContext context) => IconsDemo(),
+  ),
+  new ListItem(
+    title: 'Lists',
+    subtitle: 'Scrolling list layouts',
+    icon: Icons.fingerprint,
+    itemType: ItemType.MATERIAL,
+    routeName: ListDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/material/ListTile-class.html',
+    buildRoute: (BuildContext context) => ListDemo(),
   ),
   new ListItem(title: 'Lists: leave-behind list items',
     subtitle: 'List items with hidden actions',

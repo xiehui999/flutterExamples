@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import '../demo.dart';
+
 enum LeaveBehindDemoAction { reset, horizontalSwipe, leftSwipe, rightSwipe }
 
 class LeaveBehindItem implements Comparable<LeaveBehindItem> {
@@ -34,35 +35,23 @@ class LeaveBehindDemo extends StatefulWidget {
 }
 
 class LeaveBehindDemoState extends State<LeaveBehindDemo> {
-  static final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<
-      ScaffoldState>();
+  static final GlobalKey<ScaffoldState> _scaffoldKey =
+      GlobalKey<ScaffoldState>();
   DismissDirection _dismissDirection = DismissDirection.horizontal;
   List<LeaveBehindItem> leaveBehindItems;
 
   void initListItems() {
-    leaveBehindItems = List < LeaveBehindItem
-    >
-        .
-    generate
-    (
-    16
-    ,
-    (
-    int
-    index
-    )
-    {
-//      final String name='Item ${index} Sender';
-//      final String subject= 'Subject: ${index}';
-//      final String body="[${index}] first line of the message's body...";
-    return LeaveBehindItem(
-    index: index,
-//    name: name,
-//    subject: subject,
-//    body: body
-    );
-    }
-    );
+    leaveBehindItems = List<LeaveBehindItem>.generate(16, (int index) {
+      final String name='Item ${index} Sender';
+      final String subject= 'Subject: ${index}';
+      final String body="[${index}] first line of the message's body...";
+      return LeaveBehindItem(
+        index: index,
+    name: name,
+    subject: subject,
+    body: body
+      );
+    });
   }
 
   @override
@@ -94,13 +83,16 @@ class LeaveBehindDemoState extends State<LeaveBehindDemo> {
     setState(() {
       leaveBehindItems.remove(item);
     });
-    _scaffoldKey.currentState.showSnackBar(
-        SnackBar(content: Text('You archived item ${item.index}'),
-          action: SnackBarAction(label: 'Undo',
-              onPressed: () {
-                handleUndo(item);
-              }),));
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text('You archived item ${item.index}'),
+      action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            handleUndo(item);
+          }),
+    ));
   }
+
   void _handleArchive(LeaveBehindItem item) {
     setState(() {
       leaveBehindItems.remove(item);
@@ -109,67 +101,83 @@ class LeaveBehindDemoState extends State<LeaveBehindDemo> {
         content: Text('You archived item ${item.index}'),
         action: SnackBarAction(
             label: 'UNDO',
-            onPressed: () { handleUndo(item); }
-        )
-    ));
+            onPressed: () {
+              handleUndo(item);
+            })));
   }
+
   void _handleDelete(LeaveBehindItem item) {
     setState(() {
       leaveBehindItems.remove(item);
     });
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       content: Text('You deleted item ${item.index}'),
-      action: SnackBarAction(label: 'UnDo', onPressed: () {
-        handleUndo(item);
-      }),));
+      action: SnackBarAction(
+          label: 'UnDo',
+          onPressed: () {
+            handleUndo(item);
+          }),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
     Widget body;
     if (leaveBehindItems.isEmpty) {
-      body = Center(child: RaisedButton(onPressed: () {
-        handleDemoAction(LeaveBehindDemoAction.reset);
-      }, child: Text('Reset the list'),),);
+      body = Center(
+        child: RaisedButton(
+          onPressed: () {
+            handleDemoAction(LeaveBehindDemoAction.reset);
+          },
+          child: Text('Reset the list'),
+        ),
+      );
     } else {
-      body = ListView(children: leaveBehindItems.map((LeaveBehindItem item) {
-        return _LeaveBehindListItem(
-          item: item,
-          onArchive: _handleArchive,
-          onDelete: _handleDelete,
-          dismissDirection: _dismissDirection,
-        );
-      }).toList(),);
+      body = ListView(
+        children: leaveBehindItems.map((LeaveBehindItem item) {
+          return _LeaveBehindListItem(
+            item: item,
+            onArchive: _handleArchive,
+            onDelete: _handleDelete,
+            dismissDirection: _dismissDirection,
+          );
+        }).toList(),
+      );
     }
-    return Scaffold(key: _scaffoldKey,appBar: AppBar(title: Text("Switch to disniss"),actions: <Widget>[
-      MaterialDemoDocumentationButton(LeaveBehindDemo.routeName),
-      PopupMenuButton<LeaveBehindDemoAction>(
-          onSelected: handleDemoAction,
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<LeaveBehindDemoAction>>[
-            const PopupMenuItem<LeaveBehindDemoAction>(
-                value: LeaveBehindDemoAction.reset,
-                child: Text('Reset the list')
-            ),
-            const PopupMenuDivider(),
-            CheckedPopupMenuItem<LeaveBehindDemoAction>(
-                value: LeaveBehindDemoAction.horizontalSwipe,
-                checked: _dismissDirection == DismissDirection.horizontal,
-                child: const Text('Horizontal swipe')
-            ),
-            CheckedPopupMenuItem<LeaveBehindDemoAction>(
-                value: LeaveBehindDemoAction.leftSwipe,
-                checked: _dismissDirection == DismissDirection.endToStart,
-                child: const Text('Only swipe left')
-            ),
-            CheckedPopupMenuItem<LeaveBehindDemoAction>(
-                value: LeaveBehindDemoAction.rightSwipe,
-                checked: _dismissDirection == DismissDirection.startToEnd,
-                child: const Text('Only swipe right')
-            )
-          ]
-      )
-
-    ],),);
+    return Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        title: Text("Switch to disniss"),
+        actions: <Widget>[
+          MaterialDemoDocumentationButton(LeaveBehindDemo.routeName),
+          PopupMenuButton<LeaveBehindDemoAction>(
+              onSelected: handleDemoAction,
+              itemBuilder: (BuildContext context) =>
+                  <PopupMenuEntry<LeaveBehindDemoAction>>[
+                    const PopupMenuItem<LeaveBehindDemoAction>(
+                        value: LeaveBehindDemoAction.reset,
+                        child: Text('Reset the list')),
+                    const PopupMenuDivider(),
+                    CheckedPopupMenuItem<LeaveBehindDemoAction>(
+                        value: LeaveBehindDemoAction.horizontalSwipe,
+                        checked:
+                            _dismissDirection == DismissDirection.horizontal,
+                        child: const Text('Horizontal swipe')),
+                    CheckedPopupMenuItem<LeaveBehindDemoAction>(
+                        value: LeaveBehindDemoAction.leftSwipe,
+                        checked:
+                            _dismissDirection == DismissDirection.endToStart,
+                        child: const Text('Only swipe left')),
+                    CheckedPopupMenuItem<LeaveBehindDemoAction>(
+                        value: LeaveBehindDemoAction.rightSwipe,
+                        checked:
+                            _dismissDirection == DismissDirection.startToEnd,
+                        child: const Text('Only swipe right'))
+                  ])
+        ],
+      ),
+      body: body,
+    );
   }
 }
 
@@ -203,7 +211,8 @@ class _LeaveBehindListItem extends StatelessWidget {
           const CustomSemanticsAction(label: 'Archive'): _handleArchive,
           const CustomSemanticsAction(label: 'Delete'): _handleDelete,
         },
-        child: Dismissible(key: ObjectKey(item),
+        child: Dismissible(
+          key: ObjectKey(item),
           direction: dismissDirection,
           onDismissed: (DismissDirection direction) {
             if (direction == DismissDirection.endToStart)
@@ -213,26 +222,28 @@ class _LeaveBehindListItem extends StatelessWidget {
           },
           background: Container(
               color: themeData.primaryColor,
-              child: const ListTile(leading: Icon(
-                Icons.delete, color: Colors.white, size: 36.0,),)),
+              child: const ListTile(
+                leading: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 36.0,
+                ),
+              )),
           secondaryBackground: Container(
               color: themeData.primaryColor,
               child: const ListTile(
-                  trailing: Icon(Icons.archive, color: Colors.white, size: 36.0)
-              )
-          ),
+                  trailing:
+                      Icon(Icons.archive, color: Colors.white, size: 36.0))),
           child: Container(
             decoration: BoxDecoration(
                 color: themeData.canvasColor,
-                border: Border(bottom: BorderSide(color: themeData.dividerColor))
-            ),
+                border:
+                    Border(bottom: BorderSide(color: themeData.dividerColor))),
             child: ListTile(
                 title: Text(item.name),
                 subtitle: Text('${item.subject}\n${item.body}'),
-                isThreeLine: true
-            ),
+                      isThreeLine: true),
           ),
         ));
   }
-
 }
