@@ -27,6 +27,7 @@ import 'material/drawer_demo.dart';
 import 'material/backdrop_demo.dart';
 import 'material/leave_behind_demo.dart';
 import 'material/list_demo.dart';
+import 'material/grid_list_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -136,6 +137,15 @@ final List<ListItem> items = <ListItem>[
     buildRoute: (BuildContext context) => TwoLevelListDemo(),
   ),
   new ListItem(
+    title: 'Grid',
+    subtitle: 'Row and column layout',
+    icon: Icons.gavel,
+    itemType: ItemType.MATERIAL,
+    routeName: GridListDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/widgets/GridView-class.html',
+    buildRoute: (BuildContext context) => GridListDemo(),
+  ),
+  new ListItem(
     title: 'Icons',
     subtitle: 'Enabled and disabled icons with opacity',
     icon: Icons.play_for_work,
@@ -149,16 +159,20 @@ final List<ListItem> items = <ListItem>[
     icon: Icons.fingerprint,
     itemType: ItemType.MATERIAL,
     routeName: ListDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/material/ListTile-class.html',
+    documentationUrl:
+        'https://docs.flutter.io/flutter/material/ListTile-class.html',
     buildRoute: (BuildContext context) => ListDemo(),
   ),
-  new ListItem(title: 'Lists: leave-behind list items',
+  new ListItem(
+    title: 'Lists: leave-behind list items',
     subtitle: 'List items with hidden actions',
     icon: Icons.g_translate,
     itemType: ItemType.MATERIAL,
     routeName: LeaveBehindDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/widgets/Dismissible-class.html',
-    buildRoute: (BuildContext context) => const LeaveBehindDemo(),),
+    documentationUrl:
+        'https://docs.flutter.io/flutter/widgets/Dismissible-class.html',
+    buildRoute: (BuildContext context) => const LeaveBehindDemo(),
+  ),
   new ListItem(
     title: 'Menus',
     subtitle: 'Menu buttons and simple menus',
