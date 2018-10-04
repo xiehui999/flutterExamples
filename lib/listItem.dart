@@ -28,6 +28,7 @@ import 'material/backdrop_demo.dart';
 import 'material/leave_behind_demo.dart';
 import 'material/list_demo.dart';
 import 'material/grid_list_demo.dart';
+import 'material/expansion_panels_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -137,12 +138,22 @@ final List<ListItem> items = <ListItem>[
     buildRoute: (BuildContext context) => TwoLevelListDemo(),
   ),
   new ListItem(
+    title: 'Expansion panels',
+    subtitle: 'List of expanding panels',
+    icon: Icons.lightbulb_outline,
+    itemType: ItemType.MATERIAL,
+    routeName: ExpansionPanelsDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/material/ExpansionPanel-class.html',
+    buildRoute: (BuildContext context) => ExpansionPanelsDemo(),
+  ),
+  new ListItem(
     title: 'Grid',
     subtitle: 'Row and column layout',
     icon: Icons.gavel,
     itemType: ItemType.MATERIAL,
     routeName: GridListDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/widgets/GridView-class.html',
+    documentationUrl:
+        'https://docs.flutter.io/flutter/widgets/GridView-class.html',
     buildRoute: (BuildContext context) => GridListDemo(),
   ),
   new ListItem(
