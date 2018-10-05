@@ -29,6 +29,7 @@ import 'material/leave_behind_demo.dart';
 import 'material/list_demo.dart';
 import 'material/grid_list_demo.dart';
 import 'material/expansion_panels_demo.dart';
+import 'material/text_form_field_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -143,7 +144,8 @@ final List<ListItem> items = <ListItem>[
     icon: Icons.lightbulb_outline,
     itemType: ItemType.MATERIAL,
     routeName: ExpansionPanelsDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/material/ExpansionPanel-class.html',
+    documentationUrl:
+        'https://docs.flutter.io/flutter/material/ExpansionPanel-class.html',
     buildRoute: (BuildContext context) => ExpansionPanelsDemo(),
   ),
   new ListItem(
@@ -273,6 +275,16 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ScrollableTabsDemo.routeName,
     buildRoute: (BuildContext context) => ScrollableTabsDemo(),
+  ),
+  new ListItem(
+    title: 'Text fields',
+    subtitle: 'Single line of editable text and numbers',
+    icon: IconData(0xe901, fontFamily: 'MaterialIcons'),
+    itemType: ItemType.MATERIAL,
+    routeName: TextFormFieldDemo.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/material/TextFormField-class.html',
+    buildRoute: (BuildContext context) => TextFormFieldDemo(),
   ),
   new ListItem(
     title: 'Tooltips',
