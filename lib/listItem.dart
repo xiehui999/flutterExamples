@@ -30,6 +30,7 @@ import 'material/list_demo.dart';
 import 'material/grid_list_demo.dart';
 import 'material/expansion_panels_demo.dart';
 import 'material/text_form_field_demo.dart';
+import 'material/recorderable_demo.dart';
 
 enum ItemType { STYLES, MATERIAL }
 
@@ -185,6 +186,16 @@ final List<ListItem> items = <ListItem>[
     documentationUrl:
         'https://docs.flutter.io/flutter/widgets/Dismissible-class.html',
     buildRoute: (BuildContext context) => const LeaveBehindDemo(),
+  ),
+  new ListItem(
+    title: 'Lists: reorderable',
+    subtitle: 'Reorderable lists',
+    icon: Icons.g_translate,
+    itemType: ItemType.MATERIAL,
+    routeName: ReorderableListDemo.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/widgets/ReorderableListView-class.html',
+    buildRoute: (BuildContext context) => const ReorderableListDemo(),
   ),
   new ListItem(
     title: 'Menus',
