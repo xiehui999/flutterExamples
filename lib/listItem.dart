@@ -194,7 +194,7 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.MATERIAL,
     routeName: ReorderableListDemo.routeName,
     documentationUrl:
-        'https://docs.flutter.io/flutter/widgets/ReorderableListView-class.html',
+        'https://docs.flutter.io/flutter/material/ReorderableListView-class.html',
     buildRoute: (BuildContext context) => const ReorderableListDemo(),
   ),
   new ListItem(

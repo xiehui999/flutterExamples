@@ -67,6 +67,7 @@ class ReorderableListDemoState extends State<ReorderableListDemo> {
               RadioListTile(
                   value: ReorderableListType.horizontalAvatar,
                   dense: true,
+                  title: const Text('Horizontal Avatars'),
                   groupValue: _itemType,
                   onChanged: changeItemType),
               RadioListTile<ReorderableListType>(
@@ -88,12 +89,104 @@ class ReorderableListDemoState extends State<ReorderableListDemo> {
         );
       });
     });
+    _bottomSheet.closed.whenComplete(() {
+      if (mounted) {
+        setState(() {
+          _bottomSheet = null;
+        });
+      }
+    });
   }
-  Widget buildListTile(_ListItem item) {
 
+  Widget buildListTile(_ListItem item) {
+    const Widget secondary = Text(
+      'Even more additional list item information appears on line three.',
+    );
+    Widget listTile;
+    switch (_itemType) {
+      case ReorderableListType.threeLine:
+        listTile = CheckboxListTile(
+            key: Key(item.value),
+            isThreeLine: true,
+            title: Text('This item represents ${item.value}.'),
+            subtitle: secondary,
+            secondary: Icon(Icons.drag_handle),
+            value: item.checkState ?? false,
+            onChanged: (bool newValue) {
+              setState(() {
+                item.checkState = newValue;
+              });
+            });
+        break;
+      case ReorderableListType.horizontalAvatar:
+      case ReorderableListType.verticalAvatar:
+        listTile = Container(
+          key: Key(item.value),
+          height: 100.0,
+          width: 100.0,
+          child: CircleAvatar(
+            child: Text(item.value),
+            backgroundColor: Colors.green,
+          ),
+        );
+        break;
+    }
+    return listTile;
   }
+
+  void _onReorder(int oldIndex, int newIndex) {
+    setState(() {
+      if (newIndex > oldIndex) {
+        newIndex -= 1;
+      }
+      final _ListItem item = _items.removeAt(oldIndex);
+      _items.insert(newIndex, item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        title: Text('Recorderable list'),
+        actions: <Widget>[
+          MaterialDemoDocumentationButton(ReorderableListDemo.routeName),
+          IconButton(
+              icon: Icon(Icons.sort_by_alpha),
+              tooltip: 'Sort',
+              onPressed: () {
+                setState(() {
+                  _reverseSort = !_reverseSort;
+                  _items.sort((_ListItem a, _ListItem b) => _reverseSort
+                      ? b.value.compareTo(a.value)
+                      : a.value.compareTo(b.value));
+                });
+              }),
+          IconButton(
+              icon: Icon(Theme.of(context).platform == TargetPlatform.iOS
+                  ? Icons.more_horiz
+                  : Icons.more_vert),
+              tooltip: 'Show menu',
+              onPressed: _bottomSheet == null ? _showConfigurationSheet : null),
+        ],
+      ),
+      body: Scrollbar(
+          child: ReorderableListView(
+              header: _itemType != ReorderableListType.threeLine
+                  ? Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Header of the list',
+                        style: Theme.of(context).textTheme.headline,
+                      ),
+                    )
+                  : null,
+              scrollDirection: _itemType == ReorderableListType.horizontalAvatar
+                  ? Axis.horizontal
+                  : Axis.vertical,
+              children: _items.map(buildListTile).toList(),
+              onReorder: _onReorder)),
+    );
   }
 }
