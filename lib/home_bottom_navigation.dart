@@ -100,7 +100,7 @@ class HomeTab extends StatefulWidget {
 class HomeTabState extends State<HomeTab>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   int _currentIndex = 0;
-  BottomNavigationBarType _type = BottomNavigationBarType.shifting;
+  BottomNavigationBarType _type = BottomNavigationBarType.fixed;
   List<NavigationIconView> _navigationViews;
 
   @override
@@ -121,7 +121,7 @@ class HomeTabState extends State<HomeTab>
       new NavigationIconView(
           activeIcon: const Icon(Icons.favorite),
           icon: const Icon(Icons.favorite_border),
-          title: 'Favorites',
+          title: 'Cupertino',
           color: Colors.indigo,
           vsync: this),
       new NavigationIconView(
@@ -227,7 +227,7 @@ class HomeTabState extends State<HomeTab>
           )),
           new Center(
               child: new TabView(
-            itemType: ItemType.STYLES,
+            itemType: ItemType.CUPERTINO,
           )),
           new Center(
               child: new TabView(

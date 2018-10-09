@@ -32,8 +32,20 @@ import 'material/expansion_panels_demo.dart';
 import 'material/text_form_field_demo.dart';
 import 'material/recorderable_demo.dart';
 
-enum ItemType { STYLES, MATERIAL }
+import 'cupertino/cupertino_activity_indicator_demo.dart';
 
+enum ItemType { STYLES, MATERIAL,CUPERTINO }
+
+final List<ListItem> cupertinoItems = <ListItem>[
+  new ListItem(
+    title: 'Activity Indicator',
+    icon: Icons.rounded_corner,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoProgressIndicatorDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/cupertino/CupertinoActivityIndicator-class.html',
+    buildRoute: (BuildContext context) => new CupertinoProgressIndicatorDemo(),
+  ),
+];
 final List<ListItem> items = <ListItem>[
   new ListItem(
     title: 'Colors',
@@ -305,7 +317,7 @@ final List<ListItem> items = <ListItem>[
     routeName: TooltipDemo.routeName,
     buildRoute: (BuildContext context) => TooltipDemo(),
   ),
-];
+]..addAll(cupertinoItems);
 
 class ListItem {
   const ListItem(
