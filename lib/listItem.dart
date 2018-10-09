@@ -37,6 +37,7 @@ import 'cupertino/cupertino_alert_demo.dart';
 import 'cupertino/cupertino_buttons_demo.dart';
 import 'cupertino/cupertino_navigation.dart';
 import 'cupertino/cupertino_switch_demo.dart';
+import 'cupertino/cupertino_slider_demo.dart';
 
 enum ItemType { STYLES, MATERIAL, CUPERTINO }
 
@@ -76,6 +77,15 @@ final List<ListItem> cupertinoItems = <ListItem>[
     documentationUrl:
         'https://docs.flutter.io/flutter/cupertino/CupertinoTabScaffold-class.html',
     buildRoute: (BuildContext context) => CupertinoNavigation(),
+  ),
+  new ListItem(
+    title: 'Sliders',
+    icon: Icons.flight_land,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoSliderDemo.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/CupertinoSlider-class.html',
+    buildRoute: (BuildContext context) => CupertinoSliderDemo(),
   ),
   new ListItem(
     title: 'Switches',
