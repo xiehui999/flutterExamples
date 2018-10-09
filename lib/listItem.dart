@@ -33,6 +33,7 @@ import 'material/text_form_field_demo.dart';
 import 'material/recorderable_demo.dart';
 
 import 'cupertino/cupertino_activity_indicator_demo.dart';
+import 'cupertino/cupertino_alert_demo.dart';
 
 enum ItemType { STYLES, MATERIAL,CUPERTINO }
 
@@ -45,6 +46,13 @@ final List<ListItem> cupertinoItems = <ListItem>[
     documentationUrl: 'https://docs.flutter.io/flutter/cupertino/CupertinoActivityIndicator-class.html',
     buildRoute: (BuildContext context) => new CupertinoProgressIndicatorDemo(),
   ),
+  new ListItem(
+    title: 'Alerts',
+    icon: Icons.important_devices,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoAlertDemo.routeName,
+    documentationUrl: 'https://docs.flutter.io/flutter/cupertino/showCupertinoDialog.html',
+    buildRoute: (BuildContext context) => CupertinoAlertDemo(),)
 ];
 final List<ListItem> items = <ListItem>[
   new ListItem(
