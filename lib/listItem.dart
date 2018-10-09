@@ -34,8 +34,9 @@ import 'material/recorderable_demo.dart';
 
 import 'cupertino/cupertino_activity_indicator_demo.dart';
 import 'cupertino/cupertino_alert_demo.dart';
+import 'cupertino/cupertino_buttons_demo.dart';
 
-enum ItemType { STYLES, MATERIAL,CUPERTINO }
+enum ItemType { STYLES, MATERIAL, CUPERTINO }
 
 final List<ListItem> cupertinoItems = <ListItem>[
   new ListItem(
@@ -43,7 +44,8 @@ final List<ListItem> cupertinoItems = <ListItem>[
     icon: Icons.rounded_corner,
     itemType: ItemType.CUPERTINO,
     routeName: CupertinoProgressIndicatorDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/cupertino/CupertinoActivityIndicator-class.html',
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/CupertinoActivityIndicator-class.html',
     buildRoute: (BuildContext context) => new CupertinoProgressIndicatorDemo(),
   ),
   new ListItem(
@@ -51,9 +53,21 @@ final List<ListItem> cupertinoItems = <ListItem>[
     icon: Icons.important_devices,
     itemType: ItemType.CUPERTINO,
     routeName: CupertinoAlertDemo.routeName,
-    documentationUrl: 'https://docs.flutter.io/flutter/cupertino/showCupertinoDialog.html',
-    buildRoute: (BuildContext context) => CupertinoAlertDemo(),)
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/showCupertinoDialog.html',
+    buildRoute: (BuildContext context) => CupertinoAlertDemo(),
+  ),
+  new ListItem(
+    title: 'Buttons',
+    icon: Icons.update,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoButtonsDemo.routeName,
+    documentationUrl:
+    'https://docs.flutter.io/flutter/cupertino/CupertinoButton-class.html',
+    buildRoute: (BuildContext context) => CupertinoButtonsDemo(),
+  )
 ];
+
 final List<ListItem> items = <ListItem>[
   new ListItem(
     title: 'Colors',
