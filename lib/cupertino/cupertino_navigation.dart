@@ -428,7 +428,7 @@ class ExitButton extends StatelessWidget {
           excludeFromSemantics: true,
         ),
         onPressed: () {
-//          Navigator.of(context, rootNavigator: true).pop();
+          Navigator.of(context, rootNavigator: true).pop();
         });
   }
 }

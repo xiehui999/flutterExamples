@@ -35,6 +35,8 @@ import 'material/recorderable_demo.dart';
 import 'cupertino/cupertino_activity_indicator_demo.dart';
 import 'cupertino/cupertino_alert_demo.dart';
 import 'cupertino/cupertino_buttons_demo.dart';
+import 'cupertino/cupertino_navigation.dart';
+import 'cupertino/cupertino_switch_demo.dart';
 
 enum ItemType { STYLES, MATERIAL, CUPERTINO }
 
@@ -63,8 +65,26 @@ final List<ListItem> cupertinoItems = <ListItem>[
     itemType: ItemType.CUPERTINO,
     routeName: CupertinoButtonsDemo.routeName,
     documentationUrl:
-    'https://docs.flutter.io/flutter/cupertino/CupertinoButton-class.html',
+        'https://docs.flutter.io/flutter/cupertino/CupertinoButton-class.html',
     buildRoute: (BuildContext context) => CupertinoButtonsDemo(),
+  ),
+  new ListItem(
+    title: 'Navigation',
+    icon: Icons.update,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoNavigation.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/CupertinoTabScaffold-class.html',
+    buildRoute: (BuildContext context) => CupertinoNavigation(),
+  ),
+  new ListItem(
+    title: 'Switches',
+    icon: Icons.timeline,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoSwitchDemo.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/CupertinoSwitch-class.html',
+    buildRoute: (BuildContext context) => CupertinoSwitchDemo(),
   )
 ];
 
