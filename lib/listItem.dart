@@ -39,6 +39,7 @@ import 'cupertino/cupertino_navigation.dart';
 import 'cupertino/cupertino_switch_demo.dart';
 import 'cupertino/cupertino_slider_demo.dart';
 import 'cupertino/cupertino_segmented_control_demo.dart';
+import 'cupertino/cupertino_refresh_demo.dart';
 
 enum ItemType { STYLES, MATERIAL, CUPERTINO }
 
@@ -78,6 +79,15 @@ final List<ListItem> cupertinoItems = <ListItem>[
     documentationUrl:
         'https://docs.flutter.io/flutter/cupertino/CupertinoTabScaffold-class.html',
     buildRoute: (BuildContext context) => CupertinoNavigation(),
+  ),
+  new ListItem(
+    title: 'Pull to refresh',
+    icon: Icons.rowing,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoRefreshControlDemo.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/CupertinoSliverRefreshControl-class.html',
+    buildRoute: (BuildContext context) => CupertinoRefreshControlDemo(),
   ),
   new ListItem(
     title: 'Segmented Control',
