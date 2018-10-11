@@ -40,6 +40,7 @@ import 'cupertino/cupertino_switch_demo.dart';
 import 'cupertino/cupertino_slider_demo.dart';
 import 'cupertino/cupertino_segmented_control_demo.dart';
 import 'cupertino/cupertino_refresh_demo.dart';
+import 'cupertino/cupertino_picker_demo.dart';
 
 enum ItemType { STYLES, MATERIAL, CUPERTINO }
 
@@ -79,6 +80,15 @@ final List<ListItem> cupertinoItems = <ListItem>[
     documentationUrl:
         'https://docs.flutter.io/flutter/cupertino/CupertinoTabScaffold-class.html',
     buildRoute: (BuildContext context) => CupertinoNavigation(),
+  ),
+  new ListItem(
+    title: 'Pickers',
+    icon: Icons.transform,
+    itemType: ItemType.CUPERTINO,
+    routeName: CupertinoPickerDemo.routeName,
+    documentationUrl:
+        'https://docs.flutter.io/flutter/cupertino/CupertinoPicker-class.html',
+    buildRoute: (BuildContext context) => CupertinoPickerDemo(),
   ),
   new ListItem(
     title: 'Pull to refresh',

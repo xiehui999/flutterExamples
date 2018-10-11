@@ -6,7 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e66e59f2-fab4-4320-b66d-f228c6cda2e0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/cupertino/cupertino_refresh_demo.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/cupertino/cupertino_picker_demo.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/lib/listItem.dart" afterPath="$PROJECT_DIR$/lib/listItem.dart" />
     </list>
@@ -30,8 +30,8 @@
       <file leaf-file-name="listItem.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/listItem.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="88" column="80" lean-forward="false" selection-start-line="88" selection-start-column="80" selection-end-line="88" selection-end-column="80" />
+            <state relative-caret-position="1275">
+              <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -39,21 +39,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="icons.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/icons.dart">
+      <file leaf-file-name="cupertino_picker_demo.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_picker_demo.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="2271" column="30" lean-forward="false" selection-start-line="2271" selection-start-column="24" selection-end-line="2271" selection-end-column="30" />
+            <state relative-caret-position="192">
+              <caret line="142" column="46" lean-forward="true" selection-start-line="142" selection-start-column="46" selection-end-line="142" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="route.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/cupertino/route.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="829" column="10" lean-forward="false" selection-start-line="829" selection-start-column="10" selection-end-line="829" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cupertino_refresh_demo.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cupertino_navigation.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_navigation.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="icons.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/icons.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="41415">
+              <caret line="2763" column="33" lean-forward="false" selection-start-line="2763" selection-start-column="24" selection-end-line="2763" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cupertino_refresh_demo.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_refresh_demo.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+            <state relative-caret-position="2355">
+              <caret line="161" column="25" lean-forward="false" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -84,8 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_reverseSort</find>
-      <find>_bottomSheet</find>
       <find>_showDrivides</find>
       <find>0xe90e</find>
       <find>packages/flutter_gallery_assets</find>
@@ -114,6 +144,8 @@
       <find>0xe902</find>
       <find>repopulateList</find>
       <find>0xe921</find>
+      <find>0xe910</find>
+      <find>_buildBottomPicker</find>
     </findStrings>
     <replaceStrings>
       <replace>assets/products</replace>
@@ -136,7 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/typography_demo.dart" />
         <option value="$PROJECT_DIR$/lib/demos.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/colors_demo.dart" />
@@ -187,17 +218,18 @@
         <option value="$PROJECT_DIR$/lib/cupertino/cupertino_refresh_demo.dart" />
         <option value="$PROJECT_DIR$/lib/cupertino/cupertino_navigation.dart" />
         <option value="$PROJECT_DIR$/lib/listItem.dart" />
+        <option value="$PROJECT_DIR$/lib/cupertino/cupertino_picker_demo.dart" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="693" />
-    <option name="y" value="94" />
+    <option name="x" value="671" />
+    <option name="y" value="51" />
     <option name="width" value="1009" />
     <option name="height" value="947" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -210,58 +242,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="flutterExamples" type="1abcf292:AndroidViewProjectNode" />
-              <item name="flutter_app" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="flutterExamples" type="1abcf292:AndroidViewProjectNode" />
-              <item name="flutter_app_android" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="flutterExamples" type="1abcf292:AndroidViewProjectNode" />
-              <item name="flutter_app_android" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="flutterExamples" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutterExamples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutterExamples" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutterExamples" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutterExamples" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutterExamples" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutterExamples" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutterExamples" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="cupertino" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -406,14 +387,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="693" y="94" width="1009" height="947" extended-state="0" />
+    <frame x="671" y="51" width="1009" height="947" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298122" sideWeight="0.48232523" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24901807" sideWeight="0.5257985" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21303" sideWeight="0.5338164" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.54705274" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.4972506" order="9" side_tool="false" content_ui="tabs" />
@@ -425,7 +406,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988626" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20889348" sideWeight="0.47420147" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20889348" sideWeight="0.46618357" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980362" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -539,7 +520,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/listItem.dart</url>
-          <line>132</line>
+          <line>142</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
@@ -552,6 +533,11 @@
           <line>309</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/listItem.dart</url>
+          <line>96</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/app/src/main/java/com/example/flutterapp/MainActivity.java</url>
           <line>64</line>
@@ -562,25 +548,11 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="24" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/material/scrollable_tabs_demo.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="82" column="74" lean-forward="false" selection-start-line="82" selection-start-column="74" selection-end-line="82" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib/ui/hash_codes.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/switch.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -785,9 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="101">
           <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3330">
           <caret line="222" column="27" lean-forward="false" selection-start-line="222" selection-start-column="27" selection-end-line="222" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -829,9 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -860,9 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="50" column="47" lean-forward="false" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -898,9 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="51" column="22" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,16 +875,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="56" column="19" lean-forward="false" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_refresh_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2355">
+          <caret line="161" column="25" lean-forward="false" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/icons.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41415">
+          <caret line="2763" column="33" lean-forward="false" selection-start-line="2763" selection-start-column="24" selection-end-line="2763" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/listItem.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="88" column="80" lean-forward="false" selection-start-line="88" selection-start-column="80" selection-end-line="88" selection-end-column="80" />
+        <state relative-caret-position="1275">
+          <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -936,26 +908,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_navigation.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
+        <state relative-caret-position="450">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/icons.dart">
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/cupertino/route.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="2271" column="30" lean-forward="false" selection-start-line="2271" selection-start-column="24" selection-end-line="2271" selection-end-column="30" />
+        <state relative-caret-position="128">
+          <caret line="829" column="10" lean-forward="false" selection-start-line="829" selection-start-column="10" selection-end-line="829" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_refresh_demo.dart">
+    <entry file="file://$PROJECT_DIR$/lib/cupertino/cupertino_picker_demo.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+        <state relative-caret-position="192">
+          <caret line="142" column="46" lean-forward="true" selection-start-line="142" selection-start-column="46" selection-end-line="142" selection-end-column="46" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
