@@ -41,8 +41,9 @@ import 'cupertino/cupertino_slider_demo.dart';
 import 'cupertino/cupertino_segmented_control_demo.dart';
 import 'cupertino/cupertino_refresh_demo.dart';
 import 'cupertino/cupertino_picker_demo.dart';
+import 'media/images_demo.dart';
 
-enum ItemType { STYLES, MATERIAL, CUPERTINO }
+enum ItemType { STYLESANDMEDIA, MATERIAL, CUPERTINO }
 
 final List<ListItem> cupertinoItems = <ListItem>[
   new ListItem(
@@ -133,7 +134,7 @@ final List<ListItem> items = <ListItem>[
     title: 'Colors',
     subtitle: 'All of the predefined colors',
     icon: Icons.compare_arrows,
-    itemType: ItemType.STYLES,
+    itemType: ItemType.STYLESANDMEDIA,
     routeName: ColorsDemo.routeName,
     buildRoute: (BuildContext context) => new ColorsDemo(),
   ),
@@ -141,9 +142,17 @@ final List<ListItem> items = <ListItem>[
     title: 'Typography',
     subtitle: 'All of the predefined text styles',
     icon: Icons.accessible,
-    itemType: ItemType.STYLES,
+    itemType: ItemType.STYLESANDMEDIA,
     routeName: TypographyDemo.routeName,
     buildRoute: (BuildContext context) => new TypographyDemo(),
+  ),
+  new ListItem(
+    title: 'Animated images',
+    subtitle: 'GIF and WebP animations',
+    icon: Icons.opacity,
+    itemType: ItemType.STYLESANDMEDIA,
+    routeName: ImagesDemo.routeName,
+    buildRoute: (BuildContext context) => new ImagesDemo(),
   ),
   new ListItem(
     title: 'Backdrop',

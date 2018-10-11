@@ -83,6 +83,8 @@ flutter:
       - assets/places/india_tanjore_market_technology.png
       - assets/places/india_pondicherry_beach.png
       - assets/places/india_pondicherry_fisherman.png
+      - assets/animated_flutter_stickers.webp
+      - assets/animated_flutter_lgtm.gif
 
   # To add assets to your application, add an assets section, like this:
   # assets:

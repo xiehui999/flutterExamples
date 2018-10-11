@@ -218,7 +218,7 @@ class HomeTabState extends State<HomeTab>
         children: <Widget>[
           new Center(
             child: new TabView(
-              itemType: ItemType.STYLES,
+              itemType: ItemType.STYLESANDMEDIA,
             ),
           ),
           new Center(
@@ -231,7 +231,7 @@ class HomeTabState extends State<HomeTab>
           )),
           new Center(
               child: new TabView(
-            itemType: ItemType.STYLES,
+            itemType: ItemType.STYLESANDMEDIA,
           )),
         ],
         index: _currentIndex,
