@@ -126,7 +126,7 @@ class HomeTabState extends State<HomeTab>
           vsync: this),
       new NavigationIconView(
           icon: const Icon(Icons.event_available),
-          title: 'Event',
+          title: 'Studies',
           color: Colors.pink,
           vsync: this)
     ];
@@ -231,7 +231,7 @@ class HomeTabState extends State<HomeTab>
           )),
           new Center(
               child: new TabView(
-            itemType: ItemType.STYLESANDMEDIA,
+            itemType: ItemType.STUDIES,
           )),
         ],
         index: _currentIndex,

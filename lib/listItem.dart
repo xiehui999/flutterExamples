@@ -42,9 +42,20 @@ import 'cupertino/cupertino_segmented_control_demo.dart';
 import 'cupertino/cupertino_refresh_demo.dart';
 import 'cupertino/cupertino_picker_demo.dart';
 import 'media/images_demo.dart';
+import 'studies/contacts_demo.dart';
 
-enum ItemType { STYLESANDMEDIA, MATERIAL, CUPERTINO }
+enum ItemType { STYLESANDMEDIA, MATERIAL, CUPERTINO, STUDIES }
 
+final List<ListItem> studiesItems = <ListItem>[
+  new ListItem(
+    title: 'Contact profile',
+    subtitle: 'Address book entry with a flexible appbar',
+    icon: Icons.pets,
+    itemType: ItemType.STUDIES,
+    routeName: ContactsDemo.routeName,
+    buildRoute: (BuildContext context) => new ContactsDemo(),
+  )
+];
 final List<ListItem> cupertinoItems = <ListItem>[
   new ListItem(
     title: 'Activity Indicator',
@@ -408,7 +419,9 @@ final List<ListItem> items = <ListItem>[
     routeName: TooltipDemo.routeName,
     buildRoute: (BuildContext context) => TooltipDemo(),
   ),
-]..addAll(cupertinoItems);
+]
+  ..addAll(cupertinoItems)
+  ..addAll(studiesItems);
 
 class ListItem {
   const ListItem(
