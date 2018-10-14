@@ -43,6 +43,7 @@ import 'cupertino/cupertino_refresh_demo.dart';
 import 'cupertino/cupertino_picker_demo.dart';
 import 'media/images_demo.dart';
 import 'studies/contacts_demo.dart';
+import 'studies/shrine_demo.dart';
 
 enum ItemType { STYLESANDMEDIA, MATERIAL, CUPERTINO, STUDIES }
 
@@ -54,6 +55,14 @@ final List<ListItem> studiesItems = <ListItem>[
     itemType: ItemType.STUDIES,
     routeName: ContactsDemo.routeName,
     buildRoute: (BuildContext context) => new ContactsDemo(),
+  ),
+  new ListItem(
+    title: 'Shrine',
+    subtitle: 'Basic shopping app',
+    icon: Icons.flight_takeoff,
+    itemType: ItemType.STUDIES,
+    routeName: ShrineDemo.routeName,
+    buildRoute: (BuildContext context) => new ShrineDemo(),
   )
 ];
 final List<ListItem> cupertinoItems = <ListItem>[
