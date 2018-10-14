@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'shrine_home.dart' show ShrineHome;
-import 'shrine_them.dart' show ShrineTheme;
+import 'shrine_theme.dart' show ShrineTheme;
 
 Widget buildShrine(BuildContext context, Widget child) {
   return Theme(
