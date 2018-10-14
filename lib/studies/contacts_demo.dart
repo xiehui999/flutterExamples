@@ -95,10 +95,243 @@ class ContactsDemoState extends State<ContactsDemo> {
               SliverList(
                   delegate: SliverChildListDelegate(<Widget>[
                 AnnotatedRegion<SystemUiOverlayStyle>(
-                    child: Text('1111',style: TextStyle(height: 1000.0),), value: SystemUiOverlayStyle.dark)
+                    child: _ContactCategory(
+                      icon: Icons.call,
+                      children: <Widget>[
+                        _ContactItem(
+                          icon: Icons.message,
+                          tooltip: 'Send message',
+                          onPressed: () {
+                            _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                content: Text('Open Sms application')));
+                          },
+                          lines: <String>[
+                            '(650) 555-1234',
+                            'Mobile',
+                          ],
+                        ),
+                        _ContactItem(
+                          icon: Icons.message,
+                          tooltip: 'Send message',
+                          onPressed: () {
+                            _scaffoldKey.currentState.showSnackBar(
+                                const SnackBar(
+                                    content: Text('Open Sms application')));
+                          },
+                          lines: const <String>[
+                            '(323) 555-6789',
+                            'Work',
+                          ],
+                        ),
+                        _ContactItem(
+                          icon: Icons.message,
+                          tooltip: 'Send message',
+                          onPressed: () {
+                            _scaffoldKey.currentState.showSnackBar(
+                                const SnackBar(
+                                    content: Text('Open Sms application')));
+                          },
+                          lines: const <String>[
+                            '(650) 555-6789',
+                            'Home',
+                          ],
+                        ),
+                      ],
+                    ),
+                    value: SystemUiOverlayStyle.dark),
+                _ContactCategory(
+                  icon: Icons.contact_mail,
+                  children: <Widget>[
+                    _ContactItem(
+                      icon: Icons.email,
+                      tooltip: 'Send e-mail',
+                      onPressed: () {
+                        showSnakBar('Send e-mail');
+                      },
+                      lines: <String>[
+                        'ali_connors@example.com',
+                        'Personal',
+                      ],
+                    ),
+                    _ContactItem(
+                      icon: Icons.email,
+                      tooltip: 'Send work e-mail',
+                      onPressed: () {
+                        showSnakBar('Send a-mail');
+                      },
+                      lines: const <String>[
+                        'aliconnors@example.com',
+                        'Work',
+                      ],
+                    ),
+                  ],
+                ),
+                _ContactCategory(
+                  icon: Icons.location_on,
+                  children: <Widget>[
+                    _ContactItem(
+                      icon: Icons.map,
+                      tooltip: 'Open map',
+                      onPressed: () {
+                        showSnakBar('open a map application');
+                      },
+                      lines: const <String>[
+                        '2000 Main Street',
+                        'San Francisco, CA',
+                        'Home',
+                      ],
+                    ),
+                    _ContactItem(
+                      icon: Icons.map,
+                      tooltip: 'Open map',
+                      onPressed: () {
+                        showSnakBar('open a map application');
+                      },
+                      lines: const <String>[
+                        '1600 Amphitheater Parkway',
+                        'Mountain View, CA',
+                        'Work',
+                      ],
+                    ),
+                    _ContactItem(
+                      icon: Icons.map,
+                      tooltip: 'Open map',
+                      onPressed: () {
+                        showSnakBar('open a map application');
+                      },
+                      lines: const <String>[
+                        '126 Severyns Ave',
+                        'Mountain View, CA',
+                        'Jet Travel',
+                      ],
+                    ),
+                  ],
+                ),
+                _ContactCategory(
+                  icon: Icons.today,
+                  children: <Widget>[
+                    _ContactItem(
+                      lines: const <String>[
+                        'Birthday',
+                        'January 9th, 1989',
+                      ],
+                    ),
+                    _ContactItem(
+                      lines: const <String>[
+                        'Wedding anniversary',
+                        'June 21st, 2014',
+                      ],
+                    ),
+                    _ContactItem(
+                      lines: const <String>[
+                        'First day in office',
+                        'January 20th, 2015',
+                      ],
+                    ),
+                    _ContactItem(
+                      lines: const <String>[
+                        'Last day in office',
+                        'August 9th, 2018',
+                      ],
+                    ),
+                  ],
+                )
               ]))
             ],
           ),
         ));
+  }
+
+  void showSnakBar(String text) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+        // ignore: const_eval_throws_exception
+        content: Text(text)));
+  }
+}
+
+class _ContactCategory extends StatelessWidget {
+  const _ContactCategory({Key key, this.icon, this.children}) : super(key: key);
+  final IconData icon;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = Theme.of(context);
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: themeData.dividerColor)),
+      ),
+      child: DefaultTextStyle(
+          style: themeData.textTheme.subhead,
+          child: SafeArea(
+              top: false,
+              bottom: false,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 24.0),
+                    width: 72.0,
+                    child: Icon(
+                      icon,
+                      color: themeData.primaryColor,
+                    ),
+                  ),
+                  Expanded(
+                      child: Column(
+                    children: children,
+                  ))
+                ],
+              ))),
+    );
+  }
+}
+
+class _ContactItem extends StatelessWidget {
+  _ContactItem({Key key, this.icon, this.lines, this.tooltip, this.onPressed})
+      : assert(lines.length > 1),
+        super(key: key);
+  final IconData icon;
+  final List<String> lines;
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final List<Widget> columnChildren = lines
+        .sublist(0, lines.length - 1)
+        .map<Widget>((String line) => Text(line))
+        .toList();
+    columnChildren.add(Text(
+      lines.last,
+      style: themeData.textTheme.caption,
+    ));
+    final List<Widget> rowChildren = <Widget>[
+      Expanded(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: columnChildren,
+      ))
+    ];
+    if (icon != null) {
+      rowChildren.add(SizedBox(
+        width: 72.0,
+        child: IconButton(
+            icon: Icon(icon),
+            color: themeData.primaryColor,
+            onPressed: onPressed),
+      ));
+    }
+    return MergeSemantics(
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: rowChildren,
+        ),
+      ),
+    );
   }
 }
