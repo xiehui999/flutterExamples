@@ -114,7 +114,7 @@ const List<Product> _allProducts = <Product>[
           'buy someone else a mug.'),
   Product(
       name: 'Tea Set',
-      imageAsset: 'products/teaset.png',
+      imageAsset: 'assets/products/teaset.png',
       categories: <String>['furniture', 'fashion'],
       price: 70.00,
       vendor: _trevor,
