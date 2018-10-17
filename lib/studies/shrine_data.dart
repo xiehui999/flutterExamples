@@ -42,7 +42,7 @@ const Vendor _trevor = Vendor(
 const List<Product> _allProducts = <Product>[
   Product(
       name: 'Vintage Brown Belt',
-      imageAsset: 'products/belt.png',
+      imageAsset: 'assets/products/belt.png',
       categories: <String>['fashion', 'latest'],
       price: 300.00,
       vendor: _sandra,
@@ -136,7 +136,7 @@ const List<Product> _allProducts = <Product>[
           'up a bunch of these. These things are absorbant.'),
   Product(
       name: 'Dipped Earrings',
-      imageAsset: 'products/earrings.png',
+      imageAsset: 'assets/products/earrings.png',
       categories: <String>['fashion', 'beauty'],
       price: 25.00,
       vendor: _stella,

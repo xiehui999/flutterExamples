@@ -5,6 +5,8 @@ import 'shrine_types.dart';
 import 'shrine_data.dart';
 import 'shrine_page.dart';
 import 'shrine_theme.dart';
+import 'shrine_demo.dart';
+import 'shrine_order.dart';
 
 const double unitSize = 56.0;
 final List<Product> _products = List<Product>.from(allProducts());
@@ -27,6 +29,7 @@ int _maxIndexInRow(int rowIndex) {
 }
 
 int _rowAtIndex(int index) {
+  //~/  整除   %取余数
   final int blockCount = index ~/ _childrenPerBlock;
   return const <int>[
         0,
@@ -92,12 +95,15 @@ class _ShrineGridLayout extends SliverGridLayout {
   }
 }
 
+/**
+ * 可以重新定义布局
+ */
 class _ShrineGridDelegate extends SliverGridDelegate {
   static const double _spacing = 8.0;
 
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {
-    final double tileWidth = (constraints.crossAxisExtent - _spacing) / 2;
+    final double tileWidth = (constraints.crossAxisExtent - _spacing) / 2.0;
     const double tileHeight = 40.0 + 144.0 + 40.0;
     return _ShrineGridLayout(
         rowStride: tileHeight + _spacing,
@@ -107,7 +113,7 @@ class _ShrineGridDelegate extends SliverGridDelegate {
   }
 
   @override
-  bool shouldRelayout(SliverGridDelegate oldDelegate) {
+  bool shouldRelayout(covariant SliverGridDelegate oldDelegate) {
     return false;
   }
 }
@@ -123,6 +129,23 @@ class _ShrineHomeState extends State<ShrineHome> {
 
   static final _ShrineGridDelegate gridDelegate = _ShrineGridDelegate();
 
+  Future<Null> _showOrderPage(Product product) async {
+    final Order order = _shoppingCart[product] ?? Order(product: product);
+    final Order completedOrder = await Navigator.push(
+        context,
+        ShrineOrderRoute(
+            order: order,
+            builder: (BuildContext context) {
+              return OrderPage(
+                  order: order,
+                  products: _products,
+                  shoppingCart: _shoppingCart);
+            }));
+    assert(completedOrder.product != null);
+    if (completedOrder.quantity == 0)
+      _shoppingCart.remove(completedOrder.product);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Product featured = _products
@@ -133,16 +156,19 @@ class _ShrineHomeState extends State<ShrineHome> {
         shoppingCart: _shoppingCart,
         body: CustomScrollView(
           slivers: <Widget>[
-            SliverToBoxAdapter(
-              child: _Heading(product: featured),
-            ),
+            SliverToBoxAdapter(child: _Heading(product: featured)),
             SliverSafeArea(
                 top: false,
                 bottom: false,
                 sliver: SliverGrid(
                     delegate: SliverChildListDelegate(
                         _products.map<Widget>((Product product) {
-                      return Text('111111111111');
+                      return _ProductItem(
+                        product: product,
+                        onPressed: () {
+                          _showOrderPage(product);
+                        },
+                      );
                     }).toList()),
                     gridDelegate: gridDelegate))
           ],
@@ -305,6 +331,7 @@ class _FeaturePriceItem extends _PriceItem {
     );
   }
 }
+
 class _VendorItem extends StatelessWidget {
   const _VendorItem({Key key, @required this.vendor})
       : assert(vendor != null),
@@ -334,6 +361,60 @@ class _VendorItem extends StatelessWidget {
                 style: ShrineTheme.of(context).vendorItemStyle),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ProductItem extends StatelessWidget {
+  const _ProductItem({Key key, @required this.product, this.onPressed})
+      : assert(product != null),
+        super(key: key);
+
+  final Product product;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return MergeSemantics(
+      child: Card(
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: _ProductPriceItem(
+                    product: product,
+                  ),
+                ),
+                Container(
+                  width: 144.0,
+                  height: 144.0,
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  //使用image时为何闪退？ iPhone X
+                  child: Text("测试数据"),
+//                  child: Hero(
+//                      tag: product.tag,
+//                      child: Image.asset(
+//                        product.imageAsset,
+//                        fit: BoxFit.contain,
+//                      )),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: _VendorItem(vendor: product.vendor),
+                ),
+              ],
+            ),
+            Material(
+              type: MaterialType.transparency,
+              child: InkWell(
+                onTap: onPressed,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
