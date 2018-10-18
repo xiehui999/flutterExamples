@@ -47,7 +47,7 @@ class ShrinePageState extends State<ShrinePage> {
     showModalBottomSheet<void>(
         context: context,
         builder: (BuildContext context) {
-          if (widget.shoppingCart.isNotEmpty) {
+          if (widget.shoppingCart.isEmpty) {
             return const Padding(
                 padding: EdgeInsets.all(24.0),
                 child: Text('The shopping cart is empty'));
@@ -105,16 +105,33 @@ class ShrinePageState extends State<ShrinePage> {
               icon: Icon(Icons.shopping_cart),
               tooltip: 'Shoppiing cart',
               onPressed: _showShoppingCart),
-          PopupMenuButton(itemBuilder: (BuildContext context) {
-            return <PopupMenuItem<ShrineAction>>[
-              PopupMenuItem<ShrineAction>(
-                  child: null, value: ShrineAction.sortByPrice),
-              PopupMenuItem<ShrineAction>(
-                  child: null, value: ShrineAction.sortByProduct),
-              PopupMenuItem<ShrineAction>(
-                  child: null, value: ShrineAction.emptyCart),
-            ];
-          })
+          PopupMenuButton(
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuItem<ShrineAction>>[
+                PopupMenuItem<ShrineAction>(
+                    child: Text('sortByPrice'),
+                    value: ShrineAction.sortByPrice),
+                PopupMenuItem<ShrineAction>(
+                    child: Text('sortByProduct'),
+                    value: ShrineAction.sortByProduct),
+                PopupMenuItem<ShrineAction>(
+                    child: Text('emptyCart'), value: ShrineAction.emptyCart),
+              ];
+            },
+            onSelected: (ShrineAction action) {
+              switch (action) {
+                case ShrineAction.sortByPrice:
+                  setState(_sortByPrice);
+                  break;
+                case ShrineAction.sortByProduct:
+                  setState(_sortByProduct);
+                  break;
+                case ShrineAction.emptyCart:
+                  setState(_emptyCart);
+                  break;
+              }
+            },
+          )
         ],
       ),
       floatingActionButton: widget.floatingActionButton,

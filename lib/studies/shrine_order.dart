@@ -4,6 +4,7 @@ import 'shrine_types.dart';
 import 'package:flutter/foundation.dart';
 import 'shrine_page.dart';
 import 'shrine_home.dart';
+import 'shrine_theme.dart';
 
 class OrderPage extends StatefulWidget {
   OrderPage({
@@ -41,9 +42,14 @@ class OrderPageState extends State<OrderPage> {
   void updateOrder({int quantity, bool inCart}) {
     final Order newOrder =
         currentOrder.copyWith(quantity: quantity, inCart: inCart);
+    print("11111111111111");
+    print(widget.shoppingCart);
+    print(currentOrder);
+    print(newOrder);
     if (currentOrder != newOrder) {
       setState(() {
         widget.shoppingCart[newOrder.product] = newOrder;
+        print(widget.shoppingCart);
         currentOrder = newOrder;
       });
     }
@@ -74,9 +80,31 @@ class OrderPageState extends State<OrderPage> {
           slivers: <Widget>[
             SliverToBoxAdapter(
               child: _Heading(
-                  product: widget.order.product,
-                  quantity: currentOrder.quantity),
-            )
+                product: widget.order.product,
+                quantity: currentOrder.quantity,
+                quantityChanged: (int value) {
+                  updateOrder(quantity: value);
+                },
+              ),
+            ),
+            SliverSafeArea(
+                top: false,
+                minimum: EdgeInsets.fromLTRB(8.0, 32.0, 8.0, 8.0),
+                sliver: SliverGrid(
+                    delegate: SliverChildListDelegate(
+                        widget.products.where((Product product) {
+                      return product != widget.order.product;
+                    }).map((Product product) {
+                      return Card(
+                        elevation: 1.0,
+                        child: Image.asset(product.imageAsset,
+                            fit: BoxFit.contain),
+                      );
+                    }).toList()),
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 248.0,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0)))
           ],
         ));
   }
@@ -128,16 +156,113 @@ class _Heading extends StatelessWidget {
                   ),
                 ),
                 LayoutId(
-                  id: _HeadingLayout.product,
-                  child: Text('333'),
-                ),
+                    id: _HeadingLayout.product,
+                    child: _ProductItem(
+                        product: product,
+                        quantity: quantity,
+                        onChanged: quantityChanged)),
                 LayoutId(
-                  id: _HeadingLayout.vendor,
-                  child: Text('111')
-                ),
+                    id: _HeadingLayout.vendor,
+                    child: _VendorItem(vendor: product.vendor)),
               ],
             )),
       ),
+    );
+  }
+}
+
+class _VendorItem extends StatelessWidget {
+  const _VendorItem({Key key, @required this.vendor})
+      : assert(vendor != null),
+        super(key: key);
+  final Vendor vendor;
+
+  @override
+  Widget build(BuildContext context) {
+    final ShrineTheme theme = ShrineTheme.of(context);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        SizedBox(
+          height: 24.0,
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              vendor.name,
+              style: theme.vendorTitleStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 16.0,
+        ),
+        Text(
+          vendor.description,
+          style: theme.vendorStyle,
+        )
+      ],
+    );
+  }
+}
+
+class _ProductItem extends StatelessWidget {
+  const _ProductItem(
+      {Key key,
+      @required this.product,
+      @required this.quantity,
+      @required this.onChanged})
+      : assert(product != null),
+        assert(quantity != null),
+        assert(onChanged != null),
+        super(key: key);
+
+  final Product product;
+  final int quantity;
+  final ValueChanged<int> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final ShrineTheme theme = ShrineTheme.of(context);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Text(
+          product.name,
+          style: theme.featureTitleStyle,
+        ),
+        SizedBox(
+          height: 24.0,
+        ),
+        Text(product.description, style: theme.featureStyle),
+        SizedBox(
+          height: 16.0,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 8.0, bottom: 8.0, right: 88.0),
+          child: DropdownButtonHideUnderline(
+              child: Container(
+            decoration:
+                BoxDecoration(border: Border.all(color: Color(0xFFD9D9D9))),
+            child: DropdownButton<int>(
+                items: <int>[0, 1, 2, 3, 4, 5]
+                    .map<DropdownMenuItem<int>>((int value) {
+                  return DropdownMenuItem(
+                      value: value,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          'Quantity $value',
+                          style: theme.quantityMenuStyle,
+                        ),
+                      ));
+                }).toList(),
+                value: quantity,
+                onChanged: onChanged),
+          )),
+        ),
+      ],
     );
   }
 }
