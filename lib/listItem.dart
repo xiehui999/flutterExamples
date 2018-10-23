@@ -45,6 +45,10 @@ import 'media/images_demo.dart';
 import 'studies/contacts_demo.dart';
 import 'studies/shrine_demo.dart';
 
+
+import 'studies/pesto_demo.dart';
+
+
 enum ItemType { STYLESANDMEDIA, MATERIAL, CUPERTINO, STUDIES }
 
 final List<ListItem> studiesItems = <ListItem>[
@@ -55,6 +59,14 @@ final List<ListItem> studiesItems = <ListItem>[
     itemType: ItemType.STUDIES,
     routeName: ContactsDemo.routeName,
     buildRoute: (BuildContext context) => new ContactsDemo(),
+  ),
+  new ListItem(
+    title: 'Pesto',
+    subtitle: 'Simple recipe browse',
+    icon: Icons.adjust,
+    itemType: ItemType.STUDIES,
+    routeName: PestoDemo.routeName,
+    buildRoute: (BuildContext context) => new PestoDemo(),
   ),
   new ListItem(
     title: 'Shrine',

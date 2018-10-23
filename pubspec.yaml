@@ -42,6 +42,7 @@ flutter:
   assets:
       - lib/example_code.dart
       - assets/flutter-mark-square-64.png
+      - assets/logo_small.png
       - assets/india_chettinad_silk_market.png
       - assets/square/ali.png
       - assets/square/peter.png
