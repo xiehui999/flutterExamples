@@ -88,6 +88,22 @@ flutter:
       - assets/animated_flutter_stickers.webp
       - assets/animated_flutter_lgtm.gif
 
+      - assets/food/butternut_squash_soup.png
+      - assets/food/cherry_pie.png
+      - assets/food/chopped_beet_leaves.png
+      - assets/food/pesto_pasta.png
+      - assets/food/roasted_chicken.png
+      - assets/food/spanakopita.png
+      - assets/food/spinach_onion_salad.png
+      - assets/food/icons/fish.png
+      - assets/food/icons/healthy.png
+      - assets/food/icons/main.png
+      - assets/food/icons/meat.png
+      - assets/food/icons/quick.png
+      - assets/food/icons/spicy.png
+      - assets/food/icons/veggie.png
+
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
