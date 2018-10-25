@@ -107,7 +107,20 @@ class RecipeGridPageState extends State<RecipeGridPage> {
     );
   }
 
-  void showRecipePage(BuildContext context, Recipe recipe) {}
+  void showRecipePage(BuildContext context, Recipe recipe) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            settings: RouteSettings(name: '/pesto/recipe'),
+            builder: (BuildContext context) {
+              return Theme(
+                child: RecipePage(
+                  recipe: recipe,
+                ),
+                data: _kTheme.copyWith(platform: Theme.of(context).platform),
+              );
+            }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -472,8 +485,34 @@ class RecipePage extends StatefulWidget {
 }
 
 class RecipePageState extends State<RecipePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextStyle menuItemStyle =
+      const PestoStyle(fontSize: 15.0, color: Colors.black54, height: 24.0);
+
+  double _getAppBarHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height * 0.3;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    final double appBarHeight = _getAppBarHeight(context);
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool fullWidth = screenSize.width < _kRecipePageMaxWidth;
+    final bool isFavorite = _favoriteRecipes.contains(widget.recipe);
+    return Scaffold(
+      key: _scaffoldKey,
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+              top: 0.0,
+              left: 0.0,
+              right: 0.0,
+              height: appBarHeight + _kFabHalfSize,
+              child: Hero(
+                  tag: 'packages/${widget.recipe.imagePath}',
+                  child: Image.asset(widget.recipe.imagePath,
+                      fit: fullWidth ? BoxFit.fitWidth : BoxFit.cover)))
+        ],
+      ),
+    );
   }
 }
