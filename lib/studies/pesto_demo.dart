@@ -507,6 +507,7 @@ class RecipePageState extends State<RecipePage> {
               left: 0.0,
               right: 0.0,
               height: appBarHeight + _kFabHalfSize,
+              //tag实现页面共享元素过度动画
               child: Hero(
                   tag: 'packages/${widget.recipe.imagePath}',
                   child: Image.asset(widget.recipe.imagePath,
