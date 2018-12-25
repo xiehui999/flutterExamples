@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'listItem.dart';
 import 'dart:developer';
+import 'theme.dart';
 
 const double ItemHeight = 64.0;
 const Color _kFlutterBlue = Color(0xFF003D75);
@@ -101,6 +102,7 @@ class HomeTabState extends State<HomeTab>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   int _currentIndex = 0;
   BottomNavigationBarType _type = BottomNavigationBarType.fixed;
+  bool isDark = false;
   List<NavigationIconView> _navigationViews;
 
   @override
@@ -174,7 +176,11 @@ class HomeTabState extends State<HomeTab>
     });
     return new Stack(children: transitions);
   }
-
+  Map<String, WidgetBuilder> _buildRoutes() {
+    return new Map<String, WidgetBuilder>.fromIterable(items,
+        key: (dynamic item) => '${item.routeName}',
+        value: (dynamic item) => item.buildRoute);
+  }
   @override
   Widget build(BuildContext context) {
     final BottomNavigationBar bottomNavigationBar = new BottomNavigationBar(
@@ -191,52 +197,78 @@ class HomeTabState extends State<HomeTab>
         });
       },
     );
-    return new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Navigation'),
-        actions: <Widget>[
-          new PopupMenuButton<BottomNavigationBarType>(
-              onSelected: (BottomNavigationBarType value) {
-            setState(() {
-              _type = value;
-            });
-          }, itemBuilder: (BuildContext context) {
-            return <PopupMenuItem<BottomNavigationBarType>>[
-              PopupMenuItem<BottomNavigationBarType>(
-                value: BottomNavigationBarType.fixed,
-                child: new Text('Fixed'),
+    Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
+    };
+    _routes.addAll(_buildRoutes());
+    return new MaterialApp(
+      theme: isDark ? darkGalleryTheme : lightGalleryTheme,
+      routes: _routes,
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: const Text('Navigation'),
+          actions: <Widget>[
+            new PopupMenuButton<bool>(
+                onSelected: (bool value) {
+                  setState(() {
+                    isDark = value;
+                  });
+                },
+                icon: Icon(Icons.settings_system_daydream),
+                itemBuilder: (BuildContext context) {
+                  return <PopupMenuItem<bool>>[
+                    PopupMenuItem<bool>(
+                      value: false,
+                      child: new Text('白天模式'),
+                    ),
+                    PopupMenuItem<bool>(
+                      value: true,
+                      child: new Text('黑夜模式'),
+                    )
+                  ];
+                }),
+            new PopupMenuButton<BottomNavigationBarType>(
+                onSelected: (BottomNavigationBarType value) {
+              setState(() {
+                _type = value;
+              });
+            }, itemBuilder: (BuildContext context) {
+              return <PopupMenuItem<BottomNavigationBarType>>[
+                PopupMenuItem<BottomNavigationBarType>(
+                  value: BottomNavigationBarType.fixed,
+                  child: new Text('Fixed'),
+                ),
+                PopupMenuItem<BottomNavigationBarType>(
+                  value: BottomNavigationBarType.shifting,
+                  child: new Text('Shifting'),
+                )
+              ];
+            })
+          ],
+        ),
+        body: IndexedStack(
+          children: <Widget>[
+            new Center(
+              child: new TabView(
+                itemType: ItemType.STYLESANDMEDIA,
               ),
-              PopupMenuItem<BottomNavigationBarType>(
-                value: BottomNavigationBarType.shifting,
-                child: new Text('Shifting'),
-              )
-            ];
-          })
-        ],
-      ),
-      body: IndexedStack(
-        children: <Widget>[
-          new Center(
-            child: new TabView(
-              itemType: ItemType.STYLESANDMEDIA,
             ),
-          ),
-          new Center(
-              child: new TabView(
-            itemType: ItemType.MATERIAL,
-          )),
-          new Center(
-              child: new TabView(
-            itemType: ItemType.CUPERTINO,
-          )),
-          new Center(
-              child: new TabView(
-            itemType: ItemType.STUDIES,
-          )),
-        ],
-        index: _currentIndex,
+            new Center(
+                child: new TabView(
+              itemType: ItemType.MATERIAL,
+            )),
+            new Center(
+                child: new TabView(
+              itemType: ItemType.CUPERTINO,
+            )),
+            new Center(
+                child: new TabView(
+              itemType: ItemType.STUDIES,
+            )),
+          ],
+          index: _currentIndex,
+        ),
+        bottomNavigationBar: bottomNavigationBar,
       ),
-      bottomNavigationBar: bottomNavigationBar,
     );
   }
 }
@@ -297,10 +329,10 @@ class ItemListView extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Timeline.instantSync('Start Transition', arguments: <String, String>{
-            'from': '/',
-            'to': item.routeName,
-          });
+//          Timeline.instantSync('Start Transition', arguments: <String, String>{
+//            'from': '/',
+//            'to': item.routeName,
+//          });
           Navigator.pushNamed(context, item.routeName);
         });
   }
