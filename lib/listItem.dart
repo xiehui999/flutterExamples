@@ -44,7 +44,7 @@ import 'cupertino/cupertino_picker_demo.dart';
 import 'media/images_demo.dart';
 import 'studies/contacts_demo.dart';
 import 'studies/shrine_demo.dart';
-
+import 'studies/json_demo.dart';
 
 import 'studies/pesto_demo.dart';
 
@@ -75,6 +75,14 @@ final List<ListItem> studiesItems = <ListItem>[
     itemType: ItemType.STUDIES,
     routeName: ShrineDemo.routeName,
     buildRoute: (BuildContext context) => new ShrineDemo(),
+  ),
+  new ListItem(
+    title: 'JSON',
+    subtitle: 'Json Parse',
+    icon: Icons.subject,
+    itemType: ItemType.STUDIES,
+    routeName: JsonDemo.routeName,
+    buildRoute: (BuildContext context) => new JsonDemo(),
   )
 ];
 final List<ListItem> cupertinoItems = <ListItem>[
