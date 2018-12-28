@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'typography_demo.dart';
 import 'colors_demo.dart';
+import 'fonts_demo.dart';
 import 'material/modal_bottom_sheet_demo.dart';
 import 'material/persistent_bottom_sheet.dart';
 import 'material/buttons_demo.dart';
@@ -177,6 +178,14 @@ final List<ListItem> items = <ListItem>[
     itemType: ItemType.STYLESANDMEDIA,
     routeName: ColorsDemo.routeName,
     buildRoute: (BuildContext context) => new ColorsDemo(),
+  ),
+  new ListItem(
+    title: 'Fonts',
+    subtitle: 'Flutter fonts',
+    icon: Icons.font_download,
+    itemType: ItemType.STYLESANDMEDIA,
+    routeName: FontsDemo.routeName,
+    buildRoute: (BuildContext context) => new FontsDemo(),
   ),
   new ListItem(
     title: 'Typography',
