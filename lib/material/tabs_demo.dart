@@ -134,7 +134,7 @@ class TabsDemo extends StatelessWidget {
                   SliverOverlapAbsorber(
                     handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
                         context),
-                    child: SliverAppBar(
+                    sliver: SliverAppBar(
                       title: Text('Tabs and scrolling'),
                       pinned: true,
                       expandedHeight: 150.0,

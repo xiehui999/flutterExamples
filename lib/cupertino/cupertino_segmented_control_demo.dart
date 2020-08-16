@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import '../demo.dart';
 
 const Color _kKeyUmbraOpacity = Color(0x33000000); // alpha = 0.2
@@ -25,19 +26,19 @@ class CupertinoSegmentedControlDemoState
   final Map<int, Widget> icons = const <int, Widget>{
     0: Center(
       child: FlutterLogo(
-        colors: Colors.indigo,
+        textColor: Colors.indigo,
         size: 200.0,
       ),
     ),
     1: Center(
       child: FlutterLogo(
-        colors: Colors.teal,
+        textColor: Colors.teal,
         size: 200.0,
       ),
     ),
     2: Center(
       child: FlutterLogo(
-        colors: Colors.cyan,
+        textColor: Colors.cyan,
         size: 200.0,
       ),
     ),
@@ -76,13 +77,25 @@ class CupertinoSegmentedControlDemoState
               padding: EdgeInsets.symmetric(vertical: 64.0, horizontal: 16.0),
               decoration: BoxDecoration(
                   color: CupertinoColors.white,
-                  borderRadius: BorderRadius.circular(3.0),boxShadow: const <BoxShadow>[
-                    BoxShadow(offset: Offset(0.0, 3.0),blurRadius: 5.0,spreadRadius: -1.0,color: _kKeyUmbraOpacity),
-                    BoxShadow(offset: Offset(0.0, 6.0),blurRadius: 10.0,spreadRadius: 0.0,color: _kKeyPenumbraOpacity),
-                    BoxShadow(offset: Offset(0.0, 1.0),blurRadius: 18.0,spreadRadius: 0.0,color: _kAmbientShadowOpacity),
-              ]),
+                  borderRadius: BorderRadius.circular(3.0),
+                  boxShadow: const <BoxShadow>[
+                    BoxShadow(
+                        offset: Offset(0.0, 3.0),
+                        blurRadius: 5.0,
+                        spreadRadius: -1.0,
+                        color: _kKeyUmbraOpacity),
+                    BoxShadow(
+                        offset: Offset(0.0, 6.0),
+                        blurRadius: 10.0,
+                        spreadRadius: 0.0,
+                        color: _kKeyPenumbraOpacity),
+                    BoxShadow(
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 18.0,
+                        spreadRadius: 0.0,
+                        color: _kAmbientShadowOpacity),
+                  ]),
               child: icons[sharedValue],
-
             ),
           ))
         ],

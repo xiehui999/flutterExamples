@@ -1,4 +1,5 @@
 import 'dart:math' as Math;
+
 import 'package:flutter/material.dart';
 
 class SliderDemo extends StatefulWidget {
@@ -40,7 +41,7 @@ class _CustomThumbShape extends SliderComponentShape {
       Tween<double>(begin: _disabledThumbSize, end: _thumbSize);
 
   @override
-  void paint(PaintingContext context, Offset thumbCenter,
+  Future<void> paint(PaintingContext context, Offset thumbCenter,
       {Animation<double> activationAnimation,
       Animation<double> enableAnimation,
       bool isDiscrete,
@@ -48,7 +49,9 @@ class _CustomThumbShape extends SliderComponentShape {
       RenderBox parentBox,
       SliderThemeData sliderTheme,
       TextDirection textDirection,
-      double value}) {
+      double value,
+      double textScaleFactor,
+      Size sizeWithOverflow}) async {
     final Canvas canvas = context.canvas;
     final ColorTween colorTween = ColorTween(
         begin: sliderTheme.disabledThumbColor, end: sliderTheme.thumbColor);
@@ -83,7 +86,9 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
       RenderBox parentBox,
       SliderThemeData sliderTheme,
       TextDirection textDirection,
-      double value}) {
+      double value,
+      double textScaleFactor,
+      Size sizeWithOverflow}) {
     final Canvas canvas = context.canvas;
     final ColorTween enableColor = ColorTween(
         begin: sliderTheme.disabledThumbColor,
@@ -95,8 +100,9 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
         Offset(0.0, -slideUpTween.evaluate(activationAnimation));
     final Path thumbPath =
         _triangle(size, thumbCenter + slideUpOffset, invert: true);
-    final Color paintColor =
-        enableColor.evaluate(enableAnimation).withAlpha((255.0 * activationAnimation.value).round());
+    final Color paintColor = enableColor
+        .evaluate(enableAnimation)
+        .withAlpha((255.0 * activationAnimation.value).round());
     canvas.drawPath(thumbPath, Paint()..color = paintColor);
     canvas.drawLine(
         thumbCenter,
